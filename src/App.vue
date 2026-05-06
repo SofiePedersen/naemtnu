@@ -1,10 +1,12 @@
 <script setup>
 import Header from "./components/Header.vue";
+import HeroSection from "./components/HeroSection.vue";
 </script>
 
 <template>
     <main>
-  <Header />
+    <Header />
+    <HeroSection />
     </main>
 </template>
 
