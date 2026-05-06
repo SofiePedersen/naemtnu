@@ -20,7 +20,7 @@ import Logo from "@/assets/images/header-logo.webp";
       </p>
 
       <div class="footer-contact">
-        <p>Kontoret:</p>
+        <h4>Kontoret:</h4>
         <p>Brandts Passage 29, 1. sal</p>
         <p>5000 Odense C</p>
         <p>Tlf.: +45 60 46 44 56</p>
