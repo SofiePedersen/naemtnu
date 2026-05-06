@@ -4,6 +4,7 @@ import Instagram from "@/assets/icons/instagram.svg";
 import Linkedin from "@/assets/icons/linkedin.svg";
 import Youtube from "@/assets/icons/youtube.svg";
 import Logo from "@/assets/images/header-logo.webp";
+import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
 </script>
 
 <template>
