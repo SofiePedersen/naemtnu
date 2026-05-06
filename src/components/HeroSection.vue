@@ -93,7 +93,7 @@ input {
 }
 
 button {
-    width: 40%;
+    width: 50%;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     background-color: $color-kelp-green;
