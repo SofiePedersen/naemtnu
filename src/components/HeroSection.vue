@@ -26,7 +26,6 @@
 
 .HeroSection__headline__text {
     font-family: 'Comfortaa', sans-serif;
-    font-size: 3.5rem;
     color: $color-kelp-green;
     margin-bottom: 1rem;
     margin-right: 18.75rem;
@@ -35,7 +34,6 @@
 .HeroSection__paragraph__text {
     font-family: 'Montserret', sans-serif;
     color: $color-kelp-green;
-    font-size: 1.25rem;
     margin-bottom: 2rem;
     margin-right: 5rem;
     margin-top: 1.3rem;
