@@ -1,15 +1,15 @@
 <script setup>
+import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
 import HeroSection from "./components/HeroSection.vue";
 </script>
 
 <template>
-    <main>
+  <main>
     <Header />
     <HeroSection />
-    </main>
+    <Footer />
+  </main>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
