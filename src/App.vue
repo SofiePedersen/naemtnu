@@ -10,7 +10,6 @@ import HeroSection from "./components/HeroSection.vue";
     <HeroSection />
     <Footer />
   </main>
-  >>>>>>> 0ca05bce6ef95ad4f0ac0c5b146c31a354cae03b
 </template>
 
 <style scoped></style>
