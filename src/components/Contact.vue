@@ -9,11 +9,26 @@
       Vi lytter, spørger ind - og finder sammen en løsning, der gør det næmt for
       dig. Nu.
     </p>
-    <button>Skriv til Sebastian</button>
-    <button>Ring til Sebastian</button>
+    <div class="contact__wrapper--buttons">
+      <button>Skriv til Sebastian</button>
+      <button>Ring til Sebastian</button>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @import "../assets/main.scss";
+.contact {
+  padding: 1rem;
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.contact__wrapper--buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
 </style>
