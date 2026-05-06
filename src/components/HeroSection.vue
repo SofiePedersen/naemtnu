@@ -1,24 +1,34 @@
 <script setup>
+import { ref } from 'vue';
+
+
+
 
 const apiKey = import.meta.env.VITE_API_TOKEN;
 const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://web.dev/&key=${apiKey}`;
-const targetUrl = 'https://web.dev/';
+const targetUrl = ref('');
+const resultData = ref(null);
+
 
 const url = new URL(apiEndpoint);
 url.searchParams.set('url', targetUrl);
+url.searchParams.set('url', targetUrl.value);
+url.searchParams.set('key', apiKey);
 
-const fetchPageSpeedData = async (event) => {
-    if (event.key === 'Enter') {
-    event.preventDefault();
-    const response = await fetch(url);
-    console.log(Result.value);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+const fetchPageSpeedData = async () => {
+    const url = new URL(apiEndpoint);
+    url.searchParams.set('url', targetUrl);
+    url.searchParams.set('url', targetUrl.value);
+    url.searchParams.set('key', apiKey);
+
+    try {
+        const response = await fetch(url);
+        resultData.value = await response.json();
+        console.log(resultData.value);
+    } catch (error) {
+        console.error('Error fetching PageSpeed data:', error);
     }
-    const json = await response.json();
-    } 
-  };
-
+};
 </script>
 
 <template>
@@ -29,8 +39,8 @@ const fetchPageSpeedData = async (event) => {
         </div>
         <h5 class="HeroSection__text__h5">Link til hjemmeside:</h5>
         <div class="HeroSection__button--SEO">
-            <input type="text" placeholder="Indsæt linket til den side du vil teste..." />
-            <button type="submit" id="submit-btn">Tjek min SEO</button>
+            <input type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt linket til den side du vil teste..." />
+            <button type="submit" id="submit-btn" @click="fetchPageSpeedData">Tjek min SEO</button>
         </div>
     </main>
 </template>
