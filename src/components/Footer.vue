@@ -9,36 +9,36 @@ import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
 
 <template>
   <footer>
-    <div class="footer-content">
-      <img :src="Logo" alt="næmt.nu" class="logo" />
-      <p class="footer-description">
-        Vi udvikler professionelle hjemmesider, webshops og SEO-løsninger til
-        små og mellemstore virksomheder. Vi er der for dig før, under og efter.
-      </p>
+    <div class="footer__content">
+      <img :src="Logo" alt="næmt.nu" class="footer__content--logo" />
+      <div class="footer__content--description">
+        <p>
+          Vi udvikler professionelle hjemmesider, webshops og SEO-løsninger til
+          små og mellemstore virksomheder. Vi er der for dig før, under og
+          efter.
+        </p>
+        <p>Samarbejdet med os er næmt - fordi vi tager det svære på os</p>
+      </div>
 
-      <p class="footer-description">
-        Samarbejdet med os er næmt - fordi vi tager det svære på os
-      </p>
-
-      <div class="footer-contact">
+      <div class="footer__content--contact">
         <h4>Kontoret:</h4>
-        <p>Brandts Passage 29, 1. sal</p>
-        <p>5000 Odense C</p>
+
+        <div class="footer__content--address">
+          <p>Brandts Passage 29, 1. sal</p>
+          <p>5000 Odense C</p>
+        </div>
+
         <p>Tlf.: +45 60 46 44 56</p>
         <a href="mailto:kontakt@naemt.nu">kontakt@naemt.nu</a>
       </div>
 
-      <div class="footer-legal">
+      <div class="footer__content--legal">
         <p>CVR: 45086569</p>
         <p>Reg. nr.: 6845</p>
         <p>Kontonr.: 2578476</p>
-        <div class="footer-links">
-          <a href="/privatlivspolitik">Privatlivspolitik</a> |
-          <a href="/cookiepolitik">Cookiepolitik</a> |
-        </div>
       </div>
 
-      <div class="footer-social">
+      <div class="footer__content--social">
         <a href="https://www.facebook.com" target="_blank">
           <img :src="Facebook" alt="Facebook" />
         </a>
@@ -53,12 +53,17 @@ import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
         </a>
       </div>
 
-      <p class="footer-copyright">
+      <div class="footer__content--links">
+        <a href="/privatlivspolitik">Privatlivspolitik</a> |
+        <a href="/cookiepolitik">Cookiepolitik</a> |
+      </div>
+
+      <p class="footer__content--copyright">
         næmt.nu © 2026 · Alle rettigheder forbeholdes
       </p>
       <a href="/sitemap">Sitemap</a>
-      <div class="footer-smv">
-        <p>Medlem af SMV Danmark</p>
+      <div class="footer__content--smv">
+        <img :src="SMVDanmark" alt="medlem af SMVdanmark" />
       </div>
     </div>
   </footer>
@@ -69,5 +74,38 @@ import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
 footer {
   background-color: $color-kelp-green;
   color: $color-cloudy-white;
+  padding: 1rem;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer__content--logo {
+  height: auto;
+  width: 9.7rem;
+  filter: invert(100%) brightness(200%);
+}
+
+.footer__content--social {
+  width: 16rem;
+  display: flex;
+  gap: 2rem;
+
+  img {
+    width: 2.25rem;
+    height: 2.25rem;
+    color: $color-foam-blue;
+  }
+}
+
+.footer__content--smv {
+  width: 100%;
+  img {
+    width: 12.5rem;
+    height: auto;
+  }
 }
 </style>
