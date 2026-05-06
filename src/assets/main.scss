@@ -1,30 +1,26 @@
-
-
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
 @font-face {
-  font-family: 'Comfortaa';
-  src: url(./fonts/Comfortaa-VariableFont_wght.ttf) format('truetype');
+  font-family: "Comfortaa";
+  src: url(./fonts/Comfortaa-VariableFont_wght.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: 'Montserrat';
-  src: url(./fonts/Montserrat-VariableFont_wght.ttf) format('truetype');
+  font-family: "Montserrat";
+  src: url(./fonts/Montserrat-VariableFont_wght.ttf) format("truetype");
 }
 
-$color-foam-blue: #DCEAE7;
-$color-cloudy-white: #FFFFFF;
-$color-kelp-green: #1C4D48;
+$color-foam-blue: #dceae7;
+$color-cloudy-white: #ffffff;
+$color-kelp-green: #1c4d48;
 $color-charcoal-black: #333333;
 
-$font-comfortaa: 'comfortaa', sans-serif;
-$font-montserrat: 'montserrat', sans-serif;
+$font-comfortaa: "comfortaa", sans-serif;
+$font-montserrat: "montserrat", sans-serif;
 
 h1 {
   font-size: 40px;
@@ -54,6 +50,13 @@ h5 {
 p {
   font-size: 16px;
   font-family: $font-montserrat;
+}
+
+a {
+  font-size: 16px;
+  font-family: $font-montserrat;
+  text-decoration: none;
+  color: $color-cloudy-white;
 }
 
 button {
