@@ -15,13 +15,12 @@ header {
     display: flex;
     justify-content: start;
     background-color: $color-foam-blue;
-    padding-top: 2rem;
+    padding-top: 1rem
 }
 
 .logo {
     margin-left: 1rem;
     margin-right: 18.75rem;
-    margin-top: 2rem;
     margin-bottom: 3.75rem;
     // jeg gav rem på 4 fordi størrelsen ellers blev helt ødelagt //
     height: 4rem;
