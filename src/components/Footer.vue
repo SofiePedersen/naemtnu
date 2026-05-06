@@ -11,6 +11,9 @@ import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
   <footer>
     <div class="footer__content">
       <img :src="Logo" alt="næmt.nu" class="footer__content--logo" />
+
+      <div class="footer-separator"></div>
+
       <div class="footer__content--description">
         <p>
           Vi udvikler professionelle hjemmesider, webshops og SEO-løsninger til
@@ -54,9 +57,11 @@ import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
       </div>
 
       <div class="footer__content--links">
-        <a href="/privatlivspolitik">Privatlivspolitik</a> |
-        <a href="/cookiepolitik">Cookiepolitik</a> |
+        <a href="/privatlivspolitik">Privatlivspolitik</a>
+        <a href="/cookiepolitik">Cookiepolitik</a>
       </div>
+
+      <div class="footer-separator"></div>
 
       <p class="footer__content--copyright">
         næmt.nu © 2026 · Alle rettigheder forbeholdes
@@ -75,6 +80,22 @@ footer {
   background-color: $color-kelp-green;
   color: $color-cloudy-white;
   padding: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer__content--logo {
+  height: auto;
+  width: 9.7rem;
+  filter: invert(100%) brightness(200%);
+}
+
+.footer-separator {
+  width: 100%;
+  height: 1px;
+  background-color: $color-cloudy-white;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .footer__content {
@@ -83,10 +104,19 @@ footer {
   gap: 1rem;
 }
 
-.footer__content--logo {
-  height: auto;
-  width: 9.7rem;
-  filter: invert(100%) brightness(200%);
+.footer__content--description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer__content--contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  a {
+    text-decoration: underline;
+  }
 }
 
 .footer__content--social {
@@ -99,6 +129,11 @@ footer {
     height: 2.25rem;
     color: $color-foam-blue;
   }
+}
+
+.footer__content--links {
+  display: flex;
+  gap: 2rem;
 }
 
 .footer__content--smv {
