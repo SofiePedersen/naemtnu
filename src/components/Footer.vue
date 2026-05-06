@@ -80,6 +80,8 @@ footer {
   background-color: $color-kelp-green;
   color: $color-cloudy-white;
   padding: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .footer__content--logo {
