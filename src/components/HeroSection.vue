@@ -1,5 +1,24 @@
 <script setup>
 
+const apiKey = import.meta.env.VITE_API_TOKEN;
+const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://web.dev/&key=${apiKey}`;
+const targetUrl = 'https://web.dev/';
+
+const url = new URL(apiEndpoint);
+url.searchParams.set('url', targetUrl);
+
+const fetchPageSpeedData = async (event) => {
+    if (event.key === 'Enter') {
+    event.preventDefault();
+    const response = await fetch(url);
+    console.log(Result.value);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const json = await response.json();
+    } 
+  };
+
 </script>
 
 <template>
@@ -11,7 +30,7 @@
         <h5 class="HeroSection__text__h5">Link til hjemmeside:</h5>
         <div class="HeroSection__button--SEO">
             <input type="text" placeholder="Indsæt linket til den side du vil teste..." />
-            <button>Tjek min SEO</button>
+            <button type="submit" id="submit-btn">Tjek min SEO</button>
         </div>
     </main>
 </template>
