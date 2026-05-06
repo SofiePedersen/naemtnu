@@ -11,7 +11,7 @@
     </main>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 @import "../assets/main.scss";
 
 .HeroSection {
@@ -21,6 +21,7 @@
     justify-content: start;
     text-align: start;
     padding: 2rem;
+    background-color: $color-foam-blue;
 }
 
 .HeroSection__headline__text {
@@ -28,12 +29,16 @@
     font-size: 3.5rem;
     color: $color-kelp-green;
     margin-bottom: 1rem;
+    margin-right: 18.75rem;
 }
 
 .HeroSection__paragraph__text {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserret', sans-serif;
+    color: $color-kelp-green;
     font-size: 1.25rem;
     margin-bottom: 2rem;
+    margin-right: 5rem;
+    margin-top: 1.3rem;
 }
 
 </style>

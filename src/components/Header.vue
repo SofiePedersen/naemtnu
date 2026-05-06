@@ -19,7 +19,7 @@ header {
 }
 
 .logo {
-    margin-left: 1rem;
+    margin-left: 2rem;
     margin-right: 18.75rem;
     margin-bottom: 3.75rem;
     // jeg gav rem på 4 fordi størrelsen ellers blev helt ødelagt //
