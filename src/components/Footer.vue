@@ -57,8 +57,8 @@ import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
       </div>
 
       <div class="footer__content--links">
-        <a href="/privatlivspolitik">Privatlivspolitik</a> |
-        <a href="/cookiepolitik">Cookiepolitik</a> |
+        <a href="/privatlivspolitik">Privatlivspolitik</a>
+        <a href="/cookiepolitik">Cookiepolitik</a>
       </div>
 
       <div class="footer-separator"></div>
@@ -112,6 +112,9 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  a {
+    text-decoration: underline;
+  }
 }
 
 .footer__content--social {
