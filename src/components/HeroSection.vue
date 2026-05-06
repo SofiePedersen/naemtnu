@@ -7,8 +7,8 @@
         <div class="HeroSection">    
             <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
             <p class="HeroSection__text__p">Find ud af, hvordan din hjemmeside rangerer i søgninger og få tips til forbedring.</p>
-            <h5 class="HeroSection__text__h5">Link til hjemmeside</h5>
         </div>
+        <h5 class="HeroSection__text__h5">Link til hjemmeside:</h5>
         <div class="HeroSection__button--SEO">
             <input type="text" placeholder="Indsæt linket til den side du vil teste..." />
             <button>Tjek min SEO</button>
@@ -37,15 +37,16 @@
 
 .HeroSection__text__p {
     color: $color-kelp-green;
-    margin-bottom: 2rem;
     margin-right: 5rem;
     margin-top: 1.3rem;
 }
 
 .HeroSection__text__h5 {
     color: $color-kelp-green;
-    margin-bottom: 0.5rem;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
     font-weight: 450;
+    background-color: $color-foam-blue;
 }
 
 .HeroSection__button--SEO {
@@ -54,22 +55,28 @@
     align-items: center;
     justify-content: center;
     background-color: $color-foam-blue;
+    padding-bottom: 4rem;
 }
 
 input {
-    padding: 0.8rem;
+    padding: 2rem;
     border: 1px solid black;
-    border-radius: 20px;
-    margin-right: 1rem;
+    border-radius: 50px;
+    width: 34rem;
+    font-size: 20px;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 button {
-    padding: 0.8rem 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     background-color: $color-kelp-green;
     color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 </style>
