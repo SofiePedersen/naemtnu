@@ -73,7 +73,6 @@ button {
     padding-right: 5rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    border-radius: 50px;
     background-color: $color-kelp-green;
     color: white;
     margin-bottom: 1rem;
