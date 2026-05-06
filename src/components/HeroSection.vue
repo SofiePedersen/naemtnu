@@ -98,8 +98,7 @@ input {
 }
 
 button {
-    padding-left: 5rem;
-    padding-right: 5rem;
+    width: 40%;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     background-color: $color-kelp-green;
