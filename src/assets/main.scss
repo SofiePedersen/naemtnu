@@ -13,3 +13,36 @@ $color-foam-blue: #DCEAE7;
 $color-cloudy-white: #FFFFFF;
 $color-kelp-green: #1C4D48;
 $color-charcoal-black: #333333;
+
+$font-comfortaa: 'comfortaa', sans-serif;
+$font-montserrat: 'montserrat', sans-serif;
+
+h1 {
+  font-size: 40px;
+  font-family: $font-comfortaa;
+}
+
+h2 {
+  font-size: 32px;
+  font-family: $font-comfortaa;
+}
+
+h3 {
+  font-size: 24px;
+  font-family: $font-comfortaa;
+}
+
+h4 {
+  font-size: 20px;
+  font-family: $font-comfortaa;
+}
+
+h5 {
+  font-size: 18px;
+  font-family: $font-comfortaa;
+}
+
+p {
+  font-size: 16px;
+  font-family: $font-montserrat;
+}
