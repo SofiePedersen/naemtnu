@@ -9,6 +9,8 @@
       Vi lytter, spørger ind - og finder sammen en løsning, der gør det næmt for
       dig. Nu.
     </p>
+    <button>Skriv til Sebastian</button>
+    <button>Ring til Sebastian</button>
   </div>
 </template>
 
