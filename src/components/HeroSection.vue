@@ -67,9 +67,6 @@ button {
     padding: 0.8rem 1rem;
     background-color: $color-kelp-green;
     color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
 }
 
 </style>
