@@ -7,7 +7,7 @@ import Logo from "@/assets/images/header-logo.webp";
 </script>
 
 <template>
-  <footer class="footer">
+  <footer>
     <div class="footer-content">
       <img :src="Logo" alt="næmt.nu" class="logo" />
       <p class="footer-description">
@@ -65,7 +65,7 @@ import Logo from "@/assets/images/header-logo.webp";
 
 <style lang="scss" scoped>
 @import "../assets/main.scss";
-.footer {
+footer {
   background-color: $color-kelp-green;
   color: $color-cloudy-white;
 }
