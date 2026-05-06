@@ -91,15 +91,14 @@ input {
     padding: 2rem;
     border: 1px solid black;
     border-radius: 50px;
-    width: 34rem;
+    width: 80%;
     font-size: 20px;
     margin-bottom: 0.5rem;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 button {
-    padding-left: 5rem;
-    padding-right: 5rem;
+    width: 40%;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     background-color: $color-kelp-green;
