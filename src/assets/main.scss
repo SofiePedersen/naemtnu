@@ -59,7 +59,10 @@ p {
 button {
   font-family: $font-comfortaa;
   border-radius: 20px;
+  font-size: 20px;
+  font-style: bold;
   border: none;
   padding: 0.8rem 1rem;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   cursor: pointer;
 }
