@@ -10,11 +10,6 @@ const targetUrl = ref('');
 const resultData = ref(null);
 
 
-const url = new URL(apiEndpoint);
-url.searchParams.set('url', targetUrl);
-url.searchParams.set('url', targetUrl.value);
-url.searchParams.set('key', apiKey);
-
 const fetchPageSpeedData = async () => {
     const url = new URL(apiEndpoint);
     url.searchParams.set('url', targetUrl);
