@@ -33,7 +33,7 @@ const fetchPageSpeedData = async () => {
             <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
             <p class="HeroSection__text__p">Find ud af, hvordan din hjemmeside rangerer i søgninger og få tips til forbedring.</p>
         </div>
-        <h5 class="HeroSection__text__h5">Link til hjemmeside:</h5>
+        <p class="HeroSection__text__pbold">Link til hjemmeside:</p>
         <div class="HeroSection__button--SEO">
             <input type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt linket til den side du vil teste..." />
             <button class="btn__green" type="submit" id="submit-btn" @click="fetchPageSpeedData">Tjek min SEO</button>
@@ -68,7 +68,7 @@ const fetchPageSpeedData = async () => {
     margin-top: 1.3rem;
 }
 
-.HeroSection__text__h5 {
+.HeroSection__text__pbold {
     color: $color-kelp-green;
     padding-left: 2rem;
     padding-bottom: 1rem;
