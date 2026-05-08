@@ -2,8 +2,6 @@
 import { ref } from 'vue';
 
 
-
-
 const apiKey = import.meta.env.VITE_API_TOKEN;
 const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://web.dev/&key=${apiKey}`;
 const targetUrl = ref('');
@@ -12,11 +10,11 @@ const resultData = ref(null);
 
 const fetchPageSpeedData = async () => {
     const url = new URL(apiEndpoint);
-    url.searchParams.set('url', targetUrl);
     url.searchParams.set('url', targetUrl.value);
     url.searchParams.set('key', apiKey);
 
     try {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const response = await fetch(url);
         resultData.value = await response.json();
         console.log(resultData.value);
@@ -37,8 +35,14 @@ const fetchPageSpeedData = async () => {
             <input type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt linket til den side du vil teste..." />
             <button type="submit" id="submit-btn" @click="fetchPageSpeedData">Tjek min SEO</button>
         </div>
+        <div v-if="resultData">
+            <h2>Resultater:</h2>
+            <pre>{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</pre>
+        </div>
     </main>
 </template>
+
+
 
 <style lang="scss" scoped>
 @import "../assets/main.scss";
