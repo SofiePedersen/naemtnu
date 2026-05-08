@@ -14,8 +14,8 @@ import Sebastian from "@/assets/images/sebastian.webp";
       </p>
     </div>
     <div class="contact__wrapper--buttons">
-      <button>Skriv til Sebastian</button>
-      <button class="rts">Ring til Sebastian</button>
+      <button class="btn__green">Skriv til Sebastian</button>
+      <button class="btn__white">Ring til Sebastian</button>
     </div>
     <div class="contact__wrapper--sebastian">
       <img :src="Sebastian" alt="Sebastian" />
@@ -44,16 +44,6 @@ import Sebastian from "@/assets/images/sebastian.webp";
   align-items: center;
   flex-direction: column;
   gap: 1.5rem;
-  button {
-    background-color: $color-kelp-green;
-    color: $color-cloudy-white;
-    width: 75%;
-  }
-  .rts {
-    background-color: $color-cloudy-white;
-    color: $color-kelp-green;
-    border: 1px solid $color-kelp-green;
-  }
 }
 
 .contact__wrapper--sebastian {
