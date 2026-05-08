@@ -96,13 +96,8 @@ input {
 }
 
 .btn__green {
-    width: 50%;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    background-color: $color-kelp-green;
-    color: white;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
 }
 
 </style>
