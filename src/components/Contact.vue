@@ -27,6 +27,7 @@
   flex-direction: column;
   gap: 1.5rem;
 }
+
 .contact__wrapper--buttons {
   display: flex;
   flex-direction: column;
