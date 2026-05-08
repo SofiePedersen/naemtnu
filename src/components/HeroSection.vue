@@ -14,7 +14,6 @@ const fetchPageSpeedData = async () => {
     url.searchParams.set('key', apiKey);
 
     try {
-        await new Promise(resolve => setTimeout(resolve, 3000));
         const response = await fetch(url);
         resultData.value = await response.json();
         console.log(resultData.value);
@@ -26,6 +25,10 @@ const fetchPageSpeedData = async () => {
 
 <template>
     <main>
+        <div class="HeroSection" v-if="resultData">
+            <h2 class="HeroSection__text__h1">Resultater:</h2>
+            <p class="HeroSection__text__p">{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</p>
+        </div>
         <div class="HeroSection">    
             <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
             <p class="HeroSection__text__p">Find ud af, hvordan din hjemmeside rangerer i søgninger og få tips til forbedring.</p>
@@ -33,11 +36,7 @@ const fetchPageSpeedData = async () => {
         <h5 class="HeroSection__text__h5">Link til hjemmeside:</h5>
         <div class="HeroSection__button--SEO">
             <input type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt linket til den side du vil teste..." />
-            <button type="submit" id="submit-btn" @click="fetchPageSpeedData">Tjek min SEO</button>
-        </div>
-        <div v-if="resultData">
-            <h2>Resultater:</h2>
-            <pre>{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</pre>
+            <button class="btn__green" type="submit" id="submit-btn" @click="fetchPageSpeedData">Tjek min SEO</button>
         </div>
     </main>
 </template>
@@ -96,7 +95,7 @@ input {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-button {
+.btn__green {
     width: 50%;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
