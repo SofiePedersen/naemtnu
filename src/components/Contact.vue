@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import Sebastian from "@/assets/images/sebastian.webp";
+</script>
 
 <template>
   <div class="contact">
@@ -12,8 +14,15 @@
       </p>
     </div>
     <div class="contact__wrapper--buttons">
-      <button>Skriv til Sebastian</button>
-      <button>Ring til Sebastian</button>
+      <a href="https://naemt.nu/kontakt/" class="btn__green" target="_blank"
+        >Skriv til Sebastian</a
+      >
+      <a href="https://naemt.nu/kontakt/" class="btn__white" target="_blank"
+        >Ring til Sebastian</a
+      >
+    </div>
+    <div class="contact__wrapper--sebastian">
+      <img :src="Sebastian" alt="Sebastian" />
     </div>
   </div>
 </template>
@@ -21,17 +30,35 @@
 <style lang="scss" scoped>
 @import "../assets/main.scss";
 .contact {
+  background-color: $color-foam-blue;
   padding: 1rem;
   padding-top: 4rem;
+  padding-bottom: 0rem;
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  h2 {
+    color: $color-kelp-green;
+  }
+}
+
+.contact__wrapper--buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.contact__wrapper--buttons {
+.contact__wrapper--sebastian {
+  width: 100%;
+  margin-top: 2rem;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  gap: 1.5rem;
+  img {
+    padding: 0rem;
+    width: 85%;
+    height: auto;
+  }
 }
 </style>
