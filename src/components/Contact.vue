@@ -14,8 +14,12 @@ import Sebastian from "@/assets/images/sebastian.webp";
       </p>
     </div>
     <div class="contact__wrapper--buttons">
-      <button class="btn__green">Skriv til Sebastian</button>
-      <button class="btn__white">Ring til Sebastian</button>
+      <a href="https://naemt.nu/kontakt/" class="btn__green" target="_blank"
+        >Skriv til Sebastian</a
+      >
+      <a href="https://naemt.nu/kontakt/" class="btn__white" target="_blank"
+        >Ring til Sebastian</a
+      >
     </div>
     <div class="contact__wrapper--sebastian">
       <img :src="Sebastian" alt="Sebastian" />
