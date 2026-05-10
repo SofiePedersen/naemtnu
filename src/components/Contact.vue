@@ -3,30 +3,28 @@ import Sebastian from "@/assets/images/sebastian.webp";
 </script>
 
 <template>
-  <main>
-    <div class="contact">
-      <h4>Vil du også have det næmt? Så lad os tage en snak.</h4>
-      <h2>Din virksomhed fortjener en hjemmeside, der arbejder for dig</h2>
-      <div class="contact__text--wrapper">
-        <p>Hiv fat i Sebastian og få en ærlig snak om din hjemmeside.</p>
-        <p>
-          Vi lytter, spørger ind - og finder sammen en løsning, der gør det næmt
-          for dig. Nu.
-        </p>
-      </div>
-      <div class="contact__wrapper--buttons">
-        <a href="https://naemt.nu/kontakt/" class="btn__green" target="_blank"
-          >Skriv til Sebastian</a
-        >
-        <a href="https://naemt.nu/kontakt/" class="btn__white" target="_blank"
-          >Ring til Sebastian</a
-        >
-      </div>
-      <div class="contact__wrapper--sebastian">
-        <img :src="Sebastian" alt="Sebastian" />
-      </div>
+  <div class="contact">
+    <h4>Vil du også have det næmt? Så lad os tage en snak.</h4>
+    <h2>Din virksomhed fortjener en hjemmeside, der arbejder for dig</h2>
+    <div class="contact__text--wrapper">
+      <p>Hiv fat i Sebastian og få en ærlig snak om din hjemmeside.</p>
+      <p>
+        Vi lytter, spørger ind - og finder sammen en løsning, der gør det næmt
+        for dig. Nu.
+      </p>
     </div>
-  </main>
+    <div class="contact__wrapper--buttons">
+      <a href="https://naemt.nu/kontakt/" class="btn__green" target="_blank"
+        >Skriv til Sebastian</a
+      >
+      <a href="https://naemt.nu/kontakt/" class="btn__white" target="_blank"
+        >Ring til Sebastian</a
+      >
+    </div>
+    <div class="contact__wrapper--sebastian">
+      <img :src="Sebastian" alt="Sebastian" />
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
