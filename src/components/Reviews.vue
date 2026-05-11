@@ -104,9 +104,6 @@ import User from "@/assets/icons/user.svg";
   img {
     width: 1.25rem;
   }
-  p {
-    font-size: 0.875rem;
-  }
 }
 
 .review__card-rating {
