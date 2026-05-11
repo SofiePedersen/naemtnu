@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1096.29 1177.5">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke-width: 2.83px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #1c4d48;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-3 {
+        stroke-width: 5.67px;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-2);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <circle class="cls-1" cx="271.19" cy="947.39" r="105.42"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <circle class="cls-1" cx="550.97" cy="628.29" r="105.42"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <circle class="cls-1" cx="745.09" cy="153.13" r="105.42"/>
+    </clipPath>
+  </defs>
+  <path class="cls-3" d="M126.39,1156.55c2.88-11.39,5.79-22.84,9.21-34.01,46.91-157.16,224.55-199.08,331.36-304.68,26.09-25.62,51.33-53.55,71.56-84.28,72.93-112.01,40.36-260.44,79.1-386.45,20.8-66.55,66.21-126.62,122.21-167.7,104.85-76.6,234.56-85.98,355.5-41.96"/>
+  <circle class="cls-2" cx="31.03" cy="1061.77" r="29.61"/>
+  <circle class="cls-2" cx="805.03" cy="733.71" r="29.61"/>
+  <circle class="cls-2" cx="318.45" cy="215.77" r="29.61"/>
+  <g class="cls-6">
+    <image width="2000" height="3000" transform="translate(389.58 792.34) rotate(-180) scale(.13 -.13)" xlink:href="../../../../../../../Downloads/_DSC0798.jpg"/>
+  </g>
+  <g class="cls-4">
+    <image width="2000" height="3000" transform="translate(655.39 472.71) rotate(-180) scale(.1 -.1)" xlink:href="../../../../../../../Downloads/_DSC0772.jpg"/>
+  </g>
+  <g class="cls-5">
+    <image width="2000" height="3000" transform="translate(866.13) rotate(-180) scale(.13 -.13)" xlink:href="../../../../../../../Downloads/_DSC0729.jpg"/>
+  </g>
+</svg>
