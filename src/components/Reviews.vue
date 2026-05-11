@@ -75,10 +75,10 @@ function prevReview() {
         </button>
 
         <div class="review__card">
-          <div class="review__card-header">
+          <div class="review__card--header">
             <div><img :src="User" alt="Bruger" /></div>
 
-            <div class="review__card-author">
+            <div class="review__card--author">
               <h5>{{ reviews[activeIndex].name }}</h5>
               <p>
                 {{ reviews[activeIndex].reviewsCount }} anmeldelser ·
@@ -87,7 +87,7 @@ function prevReview() {
             </div>
           </div>
 
-          <div class="review__card-rating">
+          <div class="review__card--rating">
             <img
               v-for="n in reviews[activeIndex].rating"
               :key="n"
@@ -97,7 +97,7 @@ function prevReview() {
             <p>{{ reviews[activeIndex].timeAgo }}</p>
           </div>
 
-          <p class="review__card-text">
+          <p class="review__card--text">
             {{ reviews[activeIndex].text }}
           </p>
         </div>
@@ -119,6 +119,9 @@ function prevReview() {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  p {
+    font-size: 0.75rem;
+  }
 }
 
 .reviewslider {
@@ -129,8 +132,8 @@ function prevReview() {
 }
 
 .reviewslider button {
-  width: 3.125rem;
-  height: 3.125rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   border: none;
   background-color: $color-cloudy-white;
@@ -153,38 +156,40 @@ function prevReview() {
 .review__card {
   background-color: $color-cloudy-white;
   color: $color-charcoal-black;
-  width: 65%;
+  width: 70%;
   padding: 2rem 0.625rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   border-radius: 2rem;
+  height: 18.1rem;
+  overflow-y: auto;
   img {
     width: 1.25rem;
   }
 }
 
-.review__card-header {
+.review__card--header {
   display: flex;
   flex-direction: row;
   gap: 0.625rem;
   align-items: center;
 }
 
-.review__card-author {
+.review__card--author {
   p {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
   }
 }
 
-.review__card-rating {
+.review__card--rating {
   display: flex;
   gap: 0.2rem;
   img {
     width: 0.625rem;
   }
   p {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
   }
 }
 </style>
