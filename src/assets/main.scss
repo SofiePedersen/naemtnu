@@ -47,7 +47,7 @@ h5 {
   font-family: $font-montserrat;
 }
 
-p {
+p, li {
   font-size: 1rem;
   font-family: $font-montserrat;
 }
@@ -62,25 +62,25 @@ a {
 .btn__green {
   font-family: $font-comfortaa;
   border-radius: 3.125rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-style: bold;
   background-color: $color-kelp-green;
   color: $color-cloudy-white;
   border: none;
   padding: 1.25rem 3.5rem;
-  box-shadow: 0px 4px 4px rgba($color-kelp-green, 0.15);
+  box-shadow: 4px 4px 4px rgba($color-kelp-green, 0.15);
   cursor: pointer;
 }
 
 .btn__white {
   font-family: $font-comfortaa;
   border-radius: 3.125rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-style: bold;
   background-color: $color-cloudy-white;
   color: $color-kelp-green;
   border: 1px solid $color-kelp-green;
   padding: 1.25rem 3.5rem;
-  box-shadow: 0px 4px 4px rgba($color-kelp-green, 0.15);
+  box-shadow: 4px 4px 4px rgba($color-kelp-green, 0.15);
   cursor: pointer;
 }
