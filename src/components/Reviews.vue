@@ -18,10 +18,6 @@ import Arrow from "@/assets/icons/arrow.svg";
       </div>
     </div>
   </main>
-  <div class="review">
-    <h4>Det ikke kun os selv, der siger, det er næmt...</h4>
-    <h2>Det siger vores kunder også</h2>
-  </div>
 </template>
 
 <style lang="scss" scoped>
