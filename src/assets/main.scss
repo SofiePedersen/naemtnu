@@ -63,11 +63,11 @@ a {
   font-family: $font-comfortaa;
   border-radius: 3.125rem;
   font-size: 1rem;
-  font-style: bold;
+  font-weight: bold;
   background-color: $color-kelp-green;
   color: $color-cloudy-white;
   border: none;
-  padding: 1.25rem 3.5rem;
+  padding: 1.25rem 3rem;
   box-shadow: 4px 4px 4px rgba($color-kelp-green, 0.15);
   cursor: pointer;
 }
@@ -76,7 +76,7 @@ a {
   font-family: $font-comfortaa;
   border-radius: 3.125rem;
   font-size: 1rem;
-  font-style: bold;
+  font-weight: bold;
   background-color: $color-cloudy-white;
   color: $color-kelp-green;
   border: 1px solid $color-kelp-green;

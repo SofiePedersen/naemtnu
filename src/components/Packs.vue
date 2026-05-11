@@ -12,7 +12,7 @@
                 <div class="pricing__pack-wrapper">
                     <div class="pricing__pack">
                         <h3 class="pack__name">1-5 Søgeord</h3>
-                        <p class="pack__subtitle">Alt du skal bruge nyopstartet</p>
+                        <p class="pack__subtitle">Alt til nyopstartet</p>
 
                         <ul class="pack__list">
                             <li class="pack__item pack__item--check">Løbende SEO analyse af din hjemmeside</li>
@@ -249,27 +249,29 @@
         align-items: flex-start;
         background-color: $color-foam-blue;
         border-radius: 1.5rem;
-        padding: 2.5rem;
-        gap: 2.5rem;
-        max-width: 75rem;
+        max-width: 100rem;
         margin: 0 auto;
         overflow: visible;
         position: relative;
+    }
+
+    .pricing__pack {
+        border: none;
     }
 
     .pricing__packs {
         flex: 1;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
     .pricing__image-wrapper {
         display: block;
-        flex: 0 0 18rem;
+        flex: 0 0 32rem;
         align-self: flex-end;
-        margin-bottom: -2.5rem;
-        margin-right: -2.5rem;
+        margin-right: -3rem;
+        margin-bottom: -5px;
     }
 
     .pricing__image {
@@ -277,6 +279,25 @@
         height: auto;
         object-fit: contain;
         object-position: bottom;
+    }
+
+    .pricing__pack-wrapper {
+        padding: 2.5rem;
+        justify-content: space-between;
+    }
+
+    .pricing__pack-wrapper:first-of-type {
+        padding-right: 0rem;
+    }
+
+    .pricing__pack-wrapper:last-of-type {
+        padding: 0rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .btn__green{
+        font-size: 0.92rem;
     }
 }
 </style>
