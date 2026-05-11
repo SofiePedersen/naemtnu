@@ -1,9 +1,51 @@
 <script setup>
+import { ref } from "vue";
 import Arrow from "@/assets/icons/arrow.svg";
 import Star from "@/assets/icons/star.svg";
 import User from "@/assets/icons/user.svg";
+
+const reviews = ref([
+  {
+    name: "Randi Trabjerg",
+    reviewsCount: 2,
+    imagesCount: 1,
+    rating: 5,
+    timeAgo: "for 3 måneder siden",
+    text: `Odense Iværksætterservice sætter stor pris på samarbejdet med
+    Sebastian fra næmt.nu. Sebastian er både skarp, engageret og lydhør,
+    og han har udviklet et stærkt og praksisnært grundkursus i SEO, der
+    giver nye og mindre virksomheder et solidt afsæt til at styrke deres
+    synlighed online.`,
+  },
+  {
+    name: "Kasper Møldrup",
+    reviewsCount: 2,
+    imagesCount: 0,
+    rating: 5,
+    timeAgo: "for 4 måned siden",
+    text: "Det var en god oplevelse, at få udviklet, designet og færdiggjort den nye hjemmeside til min virksomhed. Både mine spørgsmål og ønsker til det visuelle, teksterne og det samlede udtryk som hjemmesiden skulle have lykkedes vi med at ramme rigtigt med kyndig vejledning fra de dygtige medarbejdere i næmt.nu.",
+  },
+  {
+    name: "Louise Bjerkstad Mortensen",
+    reviewsCount: 2,
+    imagesCount: 1,
+    rating: 5,
+    timeAgo: "for 2 uger siden",
+    text: "Anna synes, det var super nemt at bruge platformen, og hun anbefaler det til alle.",
+  },
+]);
+
+const activeIndex = ref(0);
+
+function nextReview() {
+  activeIndex.value = (activeIndex.value + 1) % reviews.value.length;
+}
+
+function prevReview() {
+  activeIndex.value =
+    (activeIndex.value - 1 + reviews.value.length) % reviews.value.length;
+}
 </script>
-<script setup></script>
 
 <template>
   <main>
@@ -12,36 +54,41 @@ import User from "@/assets/icons/user.svg";
       <h2>Det siger vores kunder også</h2>
 
       <div class="reviewslider">
-        <button src><img :src="Arrow" alt="Pil" /></button>
+        <button @click="prevReview">
+          <img :src="Arrow" alt="Forrige" />
+        </button>
 
         <div class="review__card">
           <div class="review__card-header">
-            <div src><img :src="User" alt="Bruger" /></div>
+            <div><img :src="User" alt="Bruger" /></div>
 
             <div class="review__card-author">
-              <h5>Randi Trabjerg</h5>
-              <p>2 anmeldelser · 1 billeder</p>
+              <h5>{{ reviews[activeIndex].name }}</h5>
+              <p>
+                {{ reviews[activeIndex].reviewsCount }} anmeldelser ·
+                {{ reviews[activeIndex].imagesCount }} billeder
+              </p>
             </div>
           </div>
 
           <div class="review__card-rating">
-            <img :src="Star" alt="Stjerne" />
-            <img :src="Star" alt="Stjerne" />
-            <img :src="Star" alt="Stjerne" />
-            <img :src="Star" alt="Stjerne" />
-            <img :src="Star" alt="Stjerne" />
-            <p>for 3 måneder siden</p>
+            <img
+              v-for="n in reviews[activeIndex].rating"
+              :key="n"
+              :src="Star"
+              alt="Stjerne"
+            />
+            <p>{{ reviews[activeIndex].timeAgo }}</p>
           </div>
 
           <p class="review__card-text">
-            Odense Iværksætterservice sætter stor pris på samarbejdet med
-            Sebastian fra næmt.nu. Sebastian er både skarp, engageret og lydhør,
-            og han har udviklet et stærkt og praksisnært grundkursus i SEO, der
-            giver nye og mindre virksomheder et solidt afsæt til at styrke deres
-            synlighed online.
+            {{ reviews[activeIndex].text }}
           </p>
         </div>
-        <button src><img :src="Arrow" alt="Pil" /></button>
+
+        <button @click="nextReview">
+          <img :src="Arrow" alt="Næste" />
+        </button>
       </div>
     </div>
   </main>
