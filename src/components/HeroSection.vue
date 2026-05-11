@@ -27,7 +27,13 @@ const fetchPageSpeedData = async () => {
     <main>
         <div class="HeroSection" v-if="resultData">
             <h2 class="HeroSection__text__h1">Resultater:</h2>
-            <p class="HeroSection__text__p">{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</p>
+            <figure class="charts">
+                <div>
+                    <div class="pie"></div>
+                    <div class="pie donut"></div>
+                    <figcaption class="HeroSection__text__fig">{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</figcaption>
+                </div>
+            </figure>
         </div>
         <div class="HeroSection">    
             <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
@@ -68,6 +74,13 @@ const fetchPageSpeedData = async () => {
     margin-top: 1.3rem;
 }
 
+.HeroSection__text__fig {
+    color: $color-kelp-green;
+    font-family: "montserrat";
+    margin-right: 5rem;
+    margin-top: 1.3rem;
+}
+
 .HeroSection__text__pbold {
     color: $color-kelp-green;
     padding-left: 2rem;
@@ -100,4 +113,39 @@ input {
     padding-bottom: 1.5rem;
 }
 
+.charts {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.pie {
+    flex: 1 0 225px;
+    max-width: 325px;
+    aspect-ratio: 1;
+    border: 1px solid black;
+    background-image: conic-gradient(
+        #1c4d48 0% 80%,
+        #e0e0e0 80% 100%
+    );
+}
+
+.donut {
+    background-image: radial-gradient(
+        #e0e0e0 0% 40%,
+        transparent 40% 70%,
+        #e0e0e0 70%
+    );
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 </style>
