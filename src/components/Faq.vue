@@ -86,9 +86,9 @@
 <style lang="scss" scoped>
 @import "../assets/main.scss";
 
-.faq-wrapper {
-  padding: 4rem 1rem;
-}
+  .faq-wrapper {
+    padding: 4rem 1rem;
+  }
 
 /* ─── Billede ────────────────────────────────────────────── */
 
