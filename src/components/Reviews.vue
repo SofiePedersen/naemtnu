@@ -19,8 +19,8 @@ import User from "@/assets/icons/user.svg";
             <div src><img :src="User" alt="Bruger" /></div>
 
             <div class="review__card-author">
-              <h5>Kenneth Jensen</h5>
-              <p>2 anmeldelser · 2 billeder</p>
+              <h5>Randi Trabjerg</h5>
+              <p>2 anmeldelser · 1 billeder</p>
             </div>
           </div>
 
@@ -34,16 +34,11 @@ import User from "@/assets/icons/user.svg";
           </div>
 
           <p class="review__card-text">
-            Det er et par gæve gutter der virkelig har opdateret vores
-            hjemmeside og bragt den ind i en ny tidsalder. Hjemmesiden har
-            skulle rumme mange nye ting vores gamle ikke havde, og de løsninger
-            vi har arbejdet med har man løst efter bedste evner forsøgt at løse.
-            De har arbejdet hurtigt og effektivt. Er der noget der har været
-            usikkerhed om, så har det været et samarbejde, så det har lavet op
-            til vores krav og forventninger. Jeg tror også NÆMT er blevet
-            udfordret i de løsninger vi har lagt at bruge. På den måde har vores
-            løsning skilt sig ud fra andre hjemmesider der sælger et produkt
-            eller en ydelse. (Vi er en patientforening)
+            Odense Iværksætterservice sætter stor pris på samarbejdet med
+            Sebastian fra næmt.nu. Sebastian er både skarp, engageret og lydhør,
+            og han har udviklet et stærkt og praksisnært grundkursus i SEO, der
+            giver nye og mindre virksomheder et solidt afsæt til at styrke deres
+            synlighed online.
           </p>
         </div>
         <button src><img :src="Arrow" alt="Pil" /></button>
@@ -106,11 +101,27 @@ import User from "@/assets/icons/user.svg";
   }
 }
 
+.review__card-header {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  align-items: center;
+}
+
+.review__card-author {
+  p {
+    font-size: 0.875rem;
+  }
+}
+
 .review__card-rating {
   display: flex;
   gap: 0.2rem;
   img {
     width: 0.625rem;
+  }
+  p {
+    font-size: 0.875rem;
   }
 }
 </style>
