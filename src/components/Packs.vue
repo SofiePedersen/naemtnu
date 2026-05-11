@@ -235,8 +235,9 @@
 @media (min-width: 1200px) {
 
     .pricing {
-        padding: 4rem 2rem;
+        padding: 4rem 9.375rem;
         background-color: $color-cloudy-white;
+        overflow: hidden;
     }
 
     .pricing__title {
@@ -249,7 +250,7 @@
         align-items: flex-start;
         background-color: $color-foam-blue;
         border-radius: 1.5rem;
-        max-width: 100rem;
+        max-width: 85rem;
         margin: 0 auto;
         overflow: visible;
         position: relative;
@@ -259,16 +260,9 @@
         border: none;
     }
 
-    .pricing__packs {
-        flex: 1;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-    }
-
     .pricing__image-wrapper {
         display: block;
-        flex: 0 0 32rem;
+        flex: 0 0 30rem;
         align-self: flex-end;
         margin-right: -3rem;
         margin-bottom: -5px;
@@ -297,7 +291,7 @@
     }
 
     .btn__green{
-        font-size: 0.92rem;
+        font-size: 0.9rem;
     }
 }
 </style>

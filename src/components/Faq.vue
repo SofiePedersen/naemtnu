@@ -220,10 +220,11 @@
       flex-direction: row;
       align-items: flex-end;
       gap: 2.5rem;
+      margin: 0rem 9.375rem;
     }
 
     .faq-wrapper__image-wrapper {
-      flex: 0 0 23.75rem;
+      margin: 0;
     }
 
     .faq-wrapper__image {
