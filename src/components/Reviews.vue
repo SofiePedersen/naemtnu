@@ -22,7 +22,7 @@ const reviews = ref([
     reviewsCount: 2,
     imagesCount: 0,
     rating: 5,
-    timeAgo: "for 4 måned siden",
+    timeAgo: "for 4 måneder siden",
     text: "Det var en god oplevelse, at få udviklet, designet og færdiggjort den nye hjemmeside til min virksomhed. Både mine spørgsmål og ønsker til det visuelle, teksterne og det samlede udtryk som hjemmesiden skulle have lykkedes vi med at ramme rigtigt med kyndig vejledning fra de dygtige medarbejdere i næmt.nu.",
   },
   {
@@ -30,8 +30,24 @@ const reviews = ref([
     reviewsCount: 2,
     imagesCount: 1,
     rating: 5,
-    timeAgo: "for 2 uger siden",
-    text: "Anna synes, det var super nemt at bruge platformen, og hun anbefaler det til alle.",
+    timeAgo: "for 4 måneder siden",
+    text: "Næmt.nu har lavet den fineste hjemmeside til mit sted, Kunstnær. De lyttede til mange idéer og greb dem. De har været fleksible undervejs, har svaret på spørgsmål og har stået klar med hjælp og vejledning. Jeg er meget tilfreds med min nye hjemmeside, og fortryder bestemt ikke mit valg.",
+  },
+  {
+    name: "Paul Misfeldt",
+    reviewsCount: 2,
+    imagesCount: 0,
+    rating: 5,
+    timeAgo: "for 3 måneder siden",
+    text: "Virkelig nogle kompetente og reelle gutter, som har lavet hjemmeside for min arbejdsplads.  Du går ikke galt i byen her.",
+  },
+  {
+    name: "Johannes Pham",
+    reviewsCount: 1,
+    imagesCount: 1,
+    rating: 5,
+    timeAgo: "for 3 måneder siden",
+    text: "Mega fed oplevelse med Næmt.nu. Virkelig kompetente og dygtige gutter, der står bag det. Kan klart anbefales herfra!",
   },
 ]);
 
