@@ -183,8 +183,8 @@ circle {
 }
 
 .loader {
-      width: 25rem;
-      height: 25rem;
+      width: 20rem;
+      height: 20rem;
       border-radius: 50%;
       position: relative;
       animation: rotate 1s linear infinite
