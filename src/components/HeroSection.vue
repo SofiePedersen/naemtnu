@@ -38,7 +38,7 @@ const fetchPageSpeedData = async () => {
                     <div class="HeroSection__circle__outer">
                         <div class="HerosSection__circle__inner">
                             <div id="number">
-                                {{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}
+                                <p>{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</p>
                             </div>
                         </div>
                     </div>
@@ -52,6 +52,7 @@ const fetchPageSpeedData = async () => {
                     </defs>
                     <circle cx="200px" cy="200px" r="185" />
                 </svg>
+            <p>{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</p>
         </div>
         <div v-if="isLoading" class="HeroSection">
             <span class="loader"></span>
@@ -172,11 +173,18 @@ circle {
     stroke-dasharray: 1165;
     stroke-dashoffset: 200;
     stroke-linecap: round;
+    animation: anim 1s ease forwards;
+}
+
+@keyframes anim {
+    100% {
+        stroke-dashoffset: 407.75;
+    }
 }
 
 .loader {
-      width: 48px;
-      height: 48px;
+      width: 25rem;
+      height: 25rem;
       border-radius: 50%;
       position: relative;
       animation: rotate 1s linear infinite
