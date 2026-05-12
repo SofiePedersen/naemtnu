@@ -6,6 +6,7 @@ const apiKey = import.meta.env.VITE_API_TOKEN;
 const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://web.dev/&key=${apiKey}`;
 const targetUrl = ref('');
 const resultData = ref(null);
+const isLoading = ref(false);
 
 
 const fetchPageSpeedData = async () => {
@@ -13,12 +14,16 @@ const fetchPageSpeedData = async () => {
     url.searchParams.set('url', targetUrl.value);
     url.searchParams.set('key', apiKey);
 
+    isLoading.value = true;
+
     try {
         const response = await fetch(url);
         resultData.value = await response.json();
         console.log(resultData.value);
     } catch (error) {
         console.error('Error fetching PageSpeed data:', error);
+    } finally {
+        isLoading.value = false;
     }
 };
 
@@ -31,6 +36,10 @@ const fetchPageSpeedData = async () => {
             <h2 class="HeroSection__text__h1">Resultater:</h2>
             <p class="HeroSection__text__p">{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</p>
         </div>
+        <div v-if="isLoading" class="HeroSection">
+            <div class="spinner"></div>
+            <p>Indlæser din seo, vent venligst...</p>
+        </div>
         <div class="HeroSection">    
             <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
             <p class="HeroSection__text__p">Find ud af, hvordan din hjemmeside rangerer i søgninger og få tips til forbedring.</p>
@@ -38,7 +47,7 @@ const fetchPageSpeedData = async () => {
         <p class="HeroSection__text__pbold">Link til hjemmeside:</p>
         <div class="HeroSection__button--SEO">
             <input type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt linket til den side du vil teste..." />
-            <button class="btn__green" type="submit" id="submit-btn" @click="fetchPageSpeedData">Tjek min SEO</button>
+            <button class="btn__green" type="submit" :disabled="isLoading" id="submit-btn" @click="fetchPageSpeedData">{{ isLoading ? 'Analyzing...' : 'Tjek min SEO' }}</button>
         </div>
     </main>
 </template>
