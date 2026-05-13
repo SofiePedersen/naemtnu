@@ -34,24 +34,15 @@ const fetchPageSpeedData = async () => {
     <main>
         <div class="HeroSection" v-if="resultData">
             <h2 class="HeroSection__text__h1">Resultater:</h2>
-                <div class="HeroSection__circle__wrapper">
-                    <div class="HeroSection__circle__outer">
-                        <div class="HerosSection__circle__inner">
-                            <div id="number">
-                                <p>{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</p>
+                <div>
+                    <div>
+                        <div>
+                            <div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <svg width="400px" height="400px">
-                    <defs>
-                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#4CAF50; stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#8BC34A; stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="200px" cy="200px" r="185" />
-                </svg>
             <p>{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</p>
         </div>
         <div v-if="isLoading" class="HeroSection">
@@ -129,58 +120,7 @@ input {
     padding-bottom: 1.5rem;
 }
 
-.HeroSection__circle__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 25rem;
-    height: 25rem;
-    position: relative;
-}
 
-.HeroSection__circle__outer {
-    width: 25rem;
-    height: 25rem;
-    box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, 0.25), 3px 3px 5px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 50%;
-    padding: 1.875rem;
-}
-
-.HeroSection__circle__inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset -1px -1px 5px 0px rgba(0, 0, 0, 0.25), inset 3px 3px 5px 0px rgba(0, 0, 0, 0.25);
-    width: 21.25rem;
-    height: 21.25rem;
-    border-radius: 50%;
-}
-
-#number { 
-    font-size: 2.5rem;
-    font-weight: 400;
-    color: $color-kelp-green;
-}
-
-svg {
-    position: absolute;
-}
-
-circle {
-    fill: none;
-    stroke: url(#gradient);
-    stroke-width: 1.875rem;
-    stroke-dasharray: 1165;
-    stroke-dashoffset: 200;
-    stroke-linecap: round;
-    animation: anim 1s ease forwards;
-}
-
-@keyframes anim {
-    100% {
-        stroke-dashoffset: 407.75;
-    }
-}
 
 .loader {
       width: 20rem;
