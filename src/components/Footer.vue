@@ -83,9 +83,7 @@ import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
 footer {
   background-color: $color-kelp-green;
   color: $color-cloudy-white;
-  padding: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding: 2rem 1rem;
 }
 
 .footer__content--logo {
@@ -183,7 +181,7 @@ footer {
 
 @media (min-width: 1200px) {
   footer {
-    padding: 1rem 9.375rem;
+    padding: 2rem 9.375rem;
   }
 }
 </style>
