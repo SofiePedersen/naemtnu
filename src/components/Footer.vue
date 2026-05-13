@@ -14,61 +14,65 @@ import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
 
       <div class="footer-separator"></div>
 
-      <div class="footer__content--description">
-        <p>
-          Vi udvikler professionelle hjemmesider, webshops og SEO-løsninger til
-          små og mellemstore virksomheder. Vi er der for dig før, under og
-          efter.
-        </p>
-        <p>Samarbejdet med os er næmt - fordi vi tager det svære på os</p>
-      </div>
-
-      <div class="footer__content--contact">
-        <h4>Kontoret:</h4>
-
-        <div class="footer__content--address">
-          <p>Brandts Passage 29, 1. sal</p>
-          <p>5000 Odense C</p>
+      <div class="footer__top-content--wrapper">
+        <div class="footer__content--description">
+          <p>
+            Vi udvikler professionelle hjemmesider, webshops og SEO-løsninger
+            til små og mellemstore virksomheder. Vi er der for dig før, under og
+            efter.
+          </p>
+          <p>Samarbejdet med os er næmt - fordi vi tager det svære på os</p>
         </div>
 
-        <p>Tlf.: +45 60 46 44 56</p>
-        <a href="mailto:kontakt@naemt.nu">kontakt@naemt.nu</a>
-      </div>
+        <div class="footer__content--contact">
+          <h4>Kontoret:</h4>
 
-      <div class="footer__content--legal">
-        <p>CVR: 45086569</p>
-        <p>Reg. nr.: 6845</p>
-        <p>Kontonr.: 2578476</p>
-      </div>
+          <div class="footer__content--address">
+            <p>Brandts Passage 29, 1. sal</p>
+            <p>5000 Odense C</p>
+          </div>
 
-      <div class="footer__content--social">
-        <a href="https://www.facebook.com" target="_blank">
-          <img :src="Facebook" alt="Facebook" />
-        </a>
-        <a href="https://www.instagram.com" target="_blank">
-          <img :src="Instagram" alt="Instagram" />
-        </a>
-        <a href="https://www.linkedin.com" target="_blank">
-          <img :src="Linkedin" alt="LinkedIn" />
-        </a>
-        <a href="https://www.youtube.com" target="_blank">
-          <img :src="Youtube" alt="YouTube" />
-        </a>
-      </div>
+          <p>Tlf.: +45 60 46 44 56</p>
+          <a href="mailto:kontakt@naemt.nu">kontakt@naemt.nu</a>
+          <div class="footer__content--legal">
+            <p>CVR: 45086569</p>
+            <p>Reg. nr.: 6845</p>
+            <p>Kontonr.: 2578476</p>
+          </div>
+        </div>
 
-      <div class="footer__content--links">
-        <a href="/privatlivspolitik">Privatlivspolitik</a>
-        <a href="/cookiepolitik">Cookiepolitik</a>
+        <div class="footer__content--social">
+          <div class="footer__content--links">
+            <a href="https://www.facebook.com" target="_blank">
+              <img :src="Facebook" alt="Facebook" />
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <img :src="Instagram" alt="Instagram" />
+            </a>
+            <a href="https://www.linkedin.com" target="_blank">
+              <img :src="Linkedin" alt="LinkedIn" />
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+              <img :src="Youtube" alt="YouTube" />
+            </a>
+          </div>
+          <div class="footer__content--links">
+            <a href="/privatlivspolitik">Privatlivspolitik</a>
+            <a href="/cookiepolitik">Cookiepolitik</a>
+          </div>
+        </div>
       </div>
 
       <div class="footer-separator"></div>
 
-      <p class="footer__content--copyright">
-        næmt.nu © 2026 · Alle rettigheder forbeholdes
-      </p>
-      <a href="/sitemap">Sitemap</a>
-      <div class="footer__content--smv">
-        <img :src="SMVDanmark" alt="medlem af SMVdanmark" />
+      <div class="footer__bottom-content--wrapper">
+        <p class="footer__content--copyright">
+          næmt.nu © 2026 · Alle rettigheder forbeholdes
+        </p>
+        <a href="/sitemap">Sitemap</a>
+        <div class="footer__content--smv">
+          <img :src="SMVDanmark" alt="medlem af SMVdanmark" />
+        </div>
       </div>
     </div>
   </footer>
@@ -104,6 +108,12 @@ footer {
   gap: 1rem;
 }
 
+.footer__top-content--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .footer__content--description {
   display: flex;
   flex-direction: column;
@@ -122,6 +132,8 @@ footer {
 .footer__content--social {
   width: 16rem;
   display: flex;
+  flex-direction: column;
+  justify-content: end;
   gap: 2rem;
 
   img {
@@ -136,11 +148,42 @@ footer {
   gap: 2rem;
 }
 
+.footer__bottom-content--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .footer__content--smv {
-  width: 100%;
   img {
     width: 12.5rem;
     height: auto;
+  }
+}
+
+/* ─── Tablet ───────────────────────────────── */
+
+@media (min-width: 768px) {
+  .footer__top-content--wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .footer__content--description {
+    max-width: 33%;
+  }
+  .footer__bottom-content--wrapper {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+
+/* ─── Desktop ─────────────────────────────── */
+
+@media (min-width: 1200px) {
+  footer {
+    padding: 1rem 9.375rem;
   }
 }
 </style>
