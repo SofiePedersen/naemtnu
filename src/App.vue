@@ -6,12 +6,14 @@ import Faq from "./components/Faq.vue";
 import Contact from "./components/Contact.vue";
 import Reviews from "./components/Reviews.vue";
 import Packs from "./components/Packs.vue";
+import SeoProcess from "./components/SeoProcess.vue";
 </script>
 
 <template>
   <main>
     <Header />
     <HeroSection />
+    <SeoProcess />
     <Packs />
     <Reviews />
     <Faq />
