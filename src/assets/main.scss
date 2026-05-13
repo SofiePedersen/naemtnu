@@ -47,7 +47,8 @@ h5 {
   font-family: $font-montserrat;
 }
 
-p, li {
+p,
+li {
   font-size: 1rem;
   font-family: $font-montserrat;
 }
@@ -57,6 +58,7 @@ a {
   font-family: $font-montserrat;
   text-decoration: none;
   color: $color-cloudy-white;
+  white-space: nowrap;
 }
 
 .btn__green {

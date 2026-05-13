@@ -192,4 +192,14 @@ function prevReview() {
     font-size: 0.75rem;
   }
 }
+
+/* ─── Tablet ───────────────────────────────── */
+
+@media (min-width: 768px) {
+}
+
+/* ─── Desktop ─────────────────────────────── */
+
+@media (min-width: 1200px) {
+}
 </style>
