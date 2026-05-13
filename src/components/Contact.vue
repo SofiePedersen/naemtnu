@@ -122,7 +122,7 @@ import Sebastian from "@/assets/images/sebastian.webp";
 
 @media (min-width: 1200px) {
   .contact {
-    margin-top: 2rem;
+    margin-top: 3rem;
     padding: 0rem 9.375rem;
     height: 30.625rem;
     overflow: visible;
@@ -132,7 +132,7 @@ import Sebastian from "@/assets/images/sebastian.webp";
     img {
       width: 23.1rem;
       height: 35.25rem;
-      transform: translateY(-3.1rem);
+      transform: translateY(-3.25rem);
     }
   }
 }
