@@ -102,11 +102,11 @@ import Sebastian from "@/assets/images/sebastian.webp";
 
   .contact__content {
     width: 65%;
+    margin-bottom: 1rem;
   }
 
   .contact__wrapper--sebastian {
-    width: 35%;
-    margin-top: 0;
+    width: 30%;
 
     img {
       width: 100%;
@@ -121,5 +121,19 @@ import Sebastian from "@/assets/images/sebastian.webp";
 /* ─── Desktop ─────────────────────────────── */
 
 @media (min-width: 1200px) {
+  .contact {
+    margin-top: 3rem;
+    padding: 0rem 9.375rem;
+    height: 30.625rem;
+    overflow: visible;
+  }
+
+  .contact__wrapper--sebastian {
+    img {
+      width: 23.1rem;
+      height: 35.25rem;
+      transform: translateY(-3.25rem);
+    }
+  }
 }
 </style>
