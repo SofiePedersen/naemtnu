@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { computed } from 'vue';
 
 
 const apiKey = import.meta.env.VITE_API_TOKEN;
@@ -7,8 +8,18 @@ const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?
 const targetUrl = ref('');
 const resultData = ref(null);
 const isLoading = ref(false);
-const isVisible = ref(false);
+const number = ref(0);
 
+let intervalId = null;
+
+intervalId = setInterval(() => {
+    if (resultData.value) {
+        const score = Math.round(resultData.value.lighthouseResult.categories.performance.score * 100);
+        if (number.value < score) {
+            number.value += 1;
+        }
+    }
+}, 20);
 
 const fetchPageSpeedData = async () => {
     const url = new URL(apiEndpoint);
@@ -35,20 +46,21 @@ const fetchPageSpeedData = async () => {
     <main>
         <div class="HeroSection" v-if="resultData">
             <h2 class="HeroSection__text__h1">Resultater:</h2>
-                <div>
-                    <div>
-                        <div>
-                            <div>
-
-                            </div>
+                <div class="wrapper">
+                    <div class="outer">
+                        <div class="inner">
+                            <div id="number">{{ number }}</div>
                         </div>
                     </div>
+                    <svg width="25rem" height="25rem">
+                        <circle cx="12.5rem" cy="12.5rem" r="11.6rem" />
+                        <defs></defs>
+                    </svg>
                 </div>
-            <p>{{ Math.round(resultData.lighthouseResult.categories.performance.score * 100) }}</p>
         </div>
         <div v-if="isLoading" class="HeroSection">
             <span class="loader"></span>
-            <p>Indlæser din seo, vent venligst...</p>
+            <p >Indlæser din seo, vent venligst...</p>
         </div>
         <div class="HeroSection">    
             <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
@@ -121,7 +133,59 @@ input {
     padding-bottom: 1.5rem;
 }
 
+.wrapper {
+    width: 25rem;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
 
+.outer {
+    width: 25rem;
+    height: 25rem;
+    box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, 0.25), 3px 3px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    padding: 1.875rem;
+}
+
+.inner {
+    width: 21.25;
+    height: 21.25rem;
+    box-shadow: inset -1px -1px 5px 0px rgba(0, 0, 0, 0.25), inset 3px 3px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#number {
+    font-size: 5rem;
+    font-family: 'montserrat', sans-serif;
+    font-weight: 400;
+    color: $color-kelp-green;
+}
+
+svg {
+    position: absolute;
+}
+
+circle {
+    fill: none;
+    stroke: $color-kelp-green;
+    stroke-width: 1.875rem;
+    stroke-dasharray: 1165;
+    stroke-dashoffset: 1165;
+    stroke-linecap: round;
+    animation: anim 1s ease forwards;
+}
+
+@keyframes anim {
+    100% {
+        stroke-dashoffset: var(--final-offset);
+    }
+}
 
 .loader {
       display: flex;
