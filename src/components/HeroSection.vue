@@ -7,6 +7,7 @@ const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?
 const targetUrl = ref('');
 const resultData = ref(null);
 const isLoading = ref(false);
+const isVisible = ref(false);
 
 
 const fetchPageSpeedData = async () => {
@@ -123,11 +124,17 @@ input {
 
 
 .loader {
-      width: 20rem;
-      height: 20rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      margin-bottom: 3rem;
+      width: 15rem;
+      height: 15rem;
       border-radius: 50%;
       position: relative;
-      animation: rotate 1s linear infinite
+      animation: rotate 1s linear infinite;
     }
     .loader::before {
       content: "";
@@ -135,8 +142,8 @@ input {
       position: absolute;
       inset: 0px;
       border-radius: 50%;
-      border: 5px solid #FFF;
-      animation: prixClipFix 2s linear infinite ;
+      border: 5px solid $color-kelp-green;
+      animation: prixClipFix 2s linear infinite;
     }
 
     @keyframes rotate {
