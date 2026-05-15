@@ -9,7 +9,7 @@ const targetUrl = ref('');
 const resultData = ref(null);
 const isLoading = ref(false);
 const number = ref(0);
-
+const CIRCUMFERENCE = 1165; 
 let intervalId = null;
 
 intervalId = setInterval(() => {
@@ -20,8 +20,6 @@ intervalId = setInterval(() => {
         }
     }
 }, 20);
-
-const CIRCUMFERENCE = 1165; 
 
 const currentOffset = computed(() => {
     return CIRCUMFERENCE - (number.value / 100) * CIRCUMFERENCE;
