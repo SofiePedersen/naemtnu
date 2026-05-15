@@ -21,6 +21,12 @@ intervalId = setInterval(() => {
     }
 }, 20);
 
+const CIRCUMFERENCE = 1165; 
+
+const currentOffset = computed(() => {
+    return CIRCUMFERENCE - (number.value / 100) * CIRCUMFERENCE;
+});
+
 const fetchPageSpeedData = async () => {
     const url = new URL(apiEndpoint);
     url.searchParams.set('url', targetUrl.value);
@@ -53,8 +59,7 @@ const fetchPageSpeedData = async () => {
                         </div>
                     </div>
                     <svg width="25rem" height="25rem">
-                        <circle cx="12.5rem" cy="12.5rem" r="11.6rem" />
-                        <defs></defs>
+                        <circle cx="12.5rem" cy="12.5rem" r="11.6rem" :style="{strokeDashoffset: currentOffset}"/>
                     </svg>
                 </div>
         </div>
@@ -176,15 +181,10 @@ circle {
     stroke: $color-kelp-green;
     stroke-width: 1.875rem;
     stroke-dasharray: 1165;
-    stroke-dashoffset: 1165;
     stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: center;
     animation: anim 1s ease forwards;
-}
-
-@keyframes anim {
-    100% {
-        stroke-dashoffset: var(--final-offset);
-    }
 }
 
 .loader {
