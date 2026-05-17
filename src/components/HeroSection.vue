@@ -9,7 +9,7 @@ const targetUrl = ref('');
 const resultData = ref(null);
 const isLoading = ref(false);
 const number = ref(0);
-const CIRCUMFERENCE = 1165; 
+const CIRCUMFERENCE = 911; 
 let intervalId = null;
 
 intervalId = setInterval(() => {
@@ -56,8 +56,8 @@ const fetchPageSpeedData = async () => {
                             <div id="number">{{ number }}</div>
                         </div>
                     </div>
-                    <svg width="25rem" height="25rem">
-                        <circle cx="12.5rem" cy="12.5rem" r="11.6rem" :style="{strokeDashoffset: currentOffset}"/>
+                    <svg width="20rem" height="20rem" viewBox="0 0 320 320">
+                        <circle cx="160" cy="160" r="145" :style="{ strokeDashoffset: currentOffset }" />
                     </svg>
                 </div>
         </div>
@@ -137,8 +137,8 @@ input {
 }
 
 .wrapper {
-    width: 25rem;
-    height: 25rem;
+    width: 20rem;
+    height: 20rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,16 +146,17 @@ input {
 }
 
 .outer {
-    width: 25rem;
-    height: 25rem;
+    box-sizing: border-box;
+    width: 20rem;
+    height: 20rem;
     box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, 0.25), 3px 3px 5px rgba(0, 0, 0, 0.25);
     border-radius: 50%;
     padding: 1.875rem;
 }
 
 .inner {
-    width: 21.25;
-    height: 21.25rem;
+    width: 16.25rem;
+    height: 16.25rem;
     box-shadow: inset -1px -1px 5px 0px rgba(0, 0, 0, 0.25), inset 3px 3px 5px rgba(0, 0, 0, 0.25);
     border-radius: 50%;
     display: flex;
@@ -177,8 +178,8 @@ svg {
 circle {
     fill: none;
     stroke: $color-kelp-green;
-    stroke-width: 1.875rem;
-    stroke-dasharray: 1165;
+    stroke-width: 30;
+    stroke-dasharray: 911;
     stroke-linecap: round;
     transform: rotate(-90deg);
     transform-origin: center;
