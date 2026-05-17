@@ -220,4 +220,33 @@ circle {
         75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
         100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
     }
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 1200px) {
+    .HeroSection {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .HeroSection__text__p {
+            margin-right: 0rem;
+        }
+    
+        .HeroSection__button--SEO {
+            flex-direction: row;
+            gap: 1rem; 
+        }
+
+        .btn__green {
+            margin-right: 25rem;
+            margin-left: 1rem;
+        }
+
+        input {
+            width: 25rem;
+        }
+    }
 </style>
