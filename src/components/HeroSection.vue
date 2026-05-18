@@ -69,6 +69,10 @@ const fetchPageSpeedData = async () => {
             <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
             <p class="HeroSection__text__p">Find ud af, hvordan din hjemmeside rangerer i søgninger og få tips til forbedring.</p>
         </div>
+        <div v-else-if="resultData && !isLoading" class="HeroSection">
+            <h2 class="HeroSection__text__h1">Hvad betyder din score?</h2>
+            <p class="HeroSection__text__p">Dit fundament er lagt, men der er altid plads til optimering. Ved at finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at din forretning bliver fundet af de helt rigtige kunder, når de søger efter dine ydelser.</p>
+        </div>
         <div class="HeroSection__text__link">
         <p class="HeroSection__text__pbold">Link til hjemmeside:</p>
         </div>
@@ -236,6 +240,7 @@ circle {
             display: flex;
             flex-direction: column;
             margin-left: 9.375rem;
+            margin-right: 37rem;
         }
     
         .HeroSection__button--SEO {
@@ -250,7 +255,7 @@ circle {
 
         input {
             width: 25rem;
-            margin-left: 9.375rem;
+            margin-left: 11rem;
         }
 
         .HeroSection__text__pbold {
@@ -259,6 +264,14 @@ circle {
 
         .HeroSection__text__h1 {
             margin-left: 9.375rem;
+        }
+
+        .loader {
+            margin-left: 11rem;
+        }
+
+        .wrapper {
+            margin-left: 40rem;
         }
     }
 </style>
