@@ -236,6 +236,13 @@ circle {
         100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
     }
 
+@media (max-width: 360px) {
+    .HeroSection {
+        padding: 1;
+        padding-left: 1rem;
+    }
+}
+
 @media (min-width: 768px) {
 
 }
