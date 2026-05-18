@@ -158,7 +158,7 @@ function prevReview() {
 .review--logo {
   position: absolute;
   z-index: 0;
-  top: 25%;
+  top: 24%;
   right: 7.5rem;
   transform: translateY(-50%);
   opacity: 0.1;
@@ -216,7 +216,7 @@ function prevReview() {
   flex-direction: column;
   gap: 1rem;
   border-radius: 2rem;
-  height: 18.1rem;
+  height: 18.3rem;
   img {
     width: 1.25rem;
   }
