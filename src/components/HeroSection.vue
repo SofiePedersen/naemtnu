@@ -49,7 +49,6 @@ const fetchPageSpeedData = async () => {
 <template>
     <main>
         <div class="HeroSection" v-if="resultData">
-            <h2 class="HeroSection__text__h1">Resultater:</h2>
                 <div class="wrapper">
                     <div class="outer">
                         <div class="inner">
@@ -60,6 +59,7 @@ const fetchPageSpeedData = async () => {
                         <circle cx="160" cy="160" r="145" :style="{ strokeDashoffset: currentOffset }" />
                     </svg>
                 </div>
+            <h2 class="HeroSection__text__h2">SEO Score</h2>
         </div>
         <div v-if="isLoading" class="HeroSection">
             <span class="loader"></span>
@@ -91,22 +91,26 @@ const fetchPageSpeedData = async () => {
 .HeroSection {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    text-align: start;
     padding: 2rem;
     background-color: $color-foam-blue;
 }
 
 .HeroSection__text__h1 {
+    text-align: start;
     color: $color-kelp-green;
     margin-bottom: 1rem;
-    margin-right: 18.75rem;
+    margin-right: 1rem;
+}
+
+.HeroSection__text__h2 {
+    text-align: center;
+    color: $color-kelp-green;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
 }
 
 .HeroSection__text__p {
     color: $color-kelp-green;
-    margin-right: 5rem;
     margin-top: 1.3rem;
 }
 
@@ -148,10 +152,12 @@ input {
 .wrapper {
     width: 20rem;
     height: 20rem;
+    margin-left: 0.4rem;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .outer {
