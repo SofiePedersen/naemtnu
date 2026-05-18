@@ -66,10 +66,13 @@ import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
       <div class="footer-separator"></div>
 
       <div class="footer__bottom-content--wrapper">
-        <p class="footer__content--copyright">
-          næmt.nu © 2026 · Alle rettigheder forbeholdes
-        </p>
-        <a href="/sitemap">Sitemap</a>
+        <div class="footer__content__copyright--wrapper">
+          <p class="footer__content--copyright">
+            næmt.nu © 2026 · Alle rettigheder forbeholdes
+          </p>
+          <a href="https://naemt.nu/sitemap/">Sitemap</a>
+        </div>
+
         <div class="footer__content--smv">
           <img :src="SMVDanmark" alt="medlem af SMVdanmark" />
         </div>
@@ -152,6 +155,12 @@ footer {
   gap: 1rem;
 }
 
+.footer__content__copyright--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .footer__content--smv {
   img {
     width: 12.5rem;
@@ -172,6 +181,10 @@ footer {
     max-width: 33%;
   }
   .footer__bottom-content--wrapper {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .footer__content__copyright--wrapper {
     flex-direction: row-reverse;
     justify-content: space-between;
   }
