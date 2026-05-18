@@ -3,6 +3,7 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 import Arrow from "@/assets/icons/arrow.svg";
 import Star from "@/assets/icons/star.svg";
 import User from "@/assets/icons/user.svg";
+import Logo from "@/assets/icons/logo.svg";
 
 const reviews = ref([
   {
@@ -93,6 +94,7 @@ function prevReview() {
     <div class="review">
       <h4>Det ikke kun os selv, der siger, det er næmt...</h4>
       <h2>Det siger vores kunder også</h2>
+      <div class="review--logo"><img :src="Logo" alt="næmt.nu logo" /></div>
 
       <div class="reviewslider">
         <button @click="prevReview">
@@ -141,21 +143,36 @@ function prevReview() {
 <style lang="scss" scoped>
 @import "../assets/main.scss";
 .review {
+  position: relative;
   background-color: $color-kelp-green;
   color: $color-cloudy-white;
   padding: 4rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   p {
     font-size: 0.75rem;
+  }
+}
+
+.review--logo {
+  position: absolute;
+  z-index: 0;
+  top: 25%;
+  right: 7.5rem;
+  transform: translateY(-50%);
+  opacity: 0.1;
+  width: 12.5rem;
+  display: none;
+  img {
+    width: 100%;
   }
 }
 
 .reviewslider {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   gap: 1rem;
 }
 
@@ -185,15 +202,16 @@ function prevReview() {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  width: 70%;
+  width: 80%;
   overflow: hidden;
 }
 
 .review__card {
   background-color: $color-cloudy-white;
   color: $color-charcoal-black;
+  z-index: 1;
   width: 100%;
-  padding: 2rem 0.625rem;
+  padding: 2rem 0.625rem 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -236,5 +254,17 @@ function prevReview() {
 /* ─── Desktop ─────────────────────────────── */
 
 @media (min-width: 1200px) {
+  .review {
+    padding-left: 9.375rem;
+    padding-right: 9.375rem;
+  }
+
+  .review__cards--wrapper {
+    width: 90%;
+  }
+
+  .review--logo {
+    display: block;
+  }
 }
 </style>
