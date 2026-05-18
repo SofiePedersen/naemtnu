@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import Arrow from "@/assets/icons/arrow.svg";
 import Star from "@/assets/icons/star.svg";
 import User from "@/assets/icons/user.svg";
@@ -11,11 +11,7 @@ const reviews = ref([
     imagesCount: 1,
     rating: 5,
     timeAgo: "for 3 måneder siden",
-    text: `Odense Iværksætterservice sætter stor pris på samarbejdet med
-    Sebastian fra næmt.nu. Sebastian er både skarp, engageret og lydhør,
-    og han har udviklet et stærkt og praksisnært grundkursus i SEO, der
-    giver nye og mindre virksomheder et solidt afsæt til at styrke deres
-    synlighed online.`,
+    text: `Odense Iværksætterservice sætter stor pris på samarbejdet med Sebastian fra næmt.nu. Sebastian er både skarp, engageret og lydhør, og han har udviklet et stærkt og praksisnært grundkursus i SEO, der giver nye og mindre virksomheder et solidt afsæt til at styrke deres synlighed online.`,
   },
   {
     name: "Kasper Møldrup",
@@ -39,7 +35,7 @@ const reviews = ref([
     imagesCount: 0,
     rating: 5,
     timeAgo: "for 3 måneder siden",
-    text: "Virkelig nogle kompetente og reelle gutter, som har lavet hjemmeside for min arbejdsplads.  Du går ikke galt i byen her.",
+    text: "Virkelig nogle kompetente og reelle gutter, som har lavet hjemmeside for min arbejdsplads. Du går ikke galt i byen her.",
   },
   {
     name: "Johannes Pham",
@@ -52,6 +48,35 @@ const reviews = ref([
 ]);
 
 const activeIndex = ref(0);
+const slidesToShow = ref(3);
+
+const updateSlidesToShow = () => {
+  const width = window.innerWidth;
+  if (width < 768) {
+    slidesToShow.value = 1;
+  } else if (width < 1200) {
+    slidesToShow.value = 2;
+  } else {
+    slidesToShow.value = 3;
+  }
+};
+
+onMounted(() => {
+  updateSlidesToShow();
+  window.addEventListener("resize", updateSlidesToShow);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", updateSlidesToShow);
+});
+
+const visibleReviews = computed(() => {
+  const result = [];
+  for (let i = 0; i < slidesToShow.value; i++) {
+    result.push(reviews.value[(activeIndex.value + i) % reviews.value.length]);
+  }
+  return result;
+});
 
 function nextReview() {
   activeIndex.value = (activeIndex.value + 1) % reviews.value.length;
@@ -74,32 +99,35 @@ function prevReview() {
           <img :src="Arrow" alt="Forrige" />
         </button>
 
-        <div class="review__card">
-          <div class="review__card--header">
-            <div><img :src="User" alt="Bruger" /></div>
-
-            <div class="review__card--author">
-              <h5>{{ reviews[activeIndex].name }}</h5>
-              <p>
-                {{ reviews[activeIndex].reviewsCount }} anmeldelser ·
-                {{ reviews[activeIndex].imagesCount }} billeder
-              </p>
+        <div class="review__cards--wrapper">
+          <div
+            class="review__card"
+            v-for="(review, index) in visibleReviews"
+            :key="index"
+          >
+            <div class="review__card--header">
+              <div><img :src="User" alt="Bruger" /></div>
+              <div class="review__card--author">
+                <h5>{{ review.name }}</h5>
+                <p>
+                  {{ review.reviewsCount }} anmeldelser ·
+                  {{ review.imagesCount }} billeder
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div class="review__card--rating">
-            <img
-              v-for="n in reviews[activeIndex].rating"
-              :key="n"
-              :src="Star"
-              alt="Stjerne"
-            />
-            <p>{{ reviews[activeIndex].timeAgo }}</p>
-          </div>
+            <div class="review__card--rating">
+              <img
+                v-for="n in review.rating"
+                :key="n"
+                :src="Star"
+                alt="Stjerne"
+              />
+              <p>{{ review.timeAgo }}</p>
+            </div>
 
-          <p class="review__card--text">
-            {{ reviews[activeIndex].text }}
-          </p>
+            <p class="review__card--text">{{ review.text }}</p>
+          </div>
         </div>
 
         <button @click="nextReview">
@@ -153,17 +181,24 @@ function prevReview() {
   transform: rotate(180deg);
 }
 
+.review__cards--wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 70%;
+  overflow: hidden;
+}
+
 .review__card {
   background-color: $color-cloudy-white;
   color: $color-charcoal-black;
-  width: 70%;
+  width: 100%;
   padding: 2rem 0.625rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   border-radius: 2rem;
   height: 18.1rem;
-  overflow-y: auto;
   img {
     width: 1.25rem;
   }
