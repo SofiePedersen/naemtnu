@@ -63,15 +63,17 @@ const fetchPageSpeedData = async () => {
         </div>
         <div v-if="isLoading" class="HeroSection">
             <span class="loader"></span>
-            <p >Indlæser din seo, vent venligst...</p>
+            <p class="HeroSection__text__p">Indlæser din seo, vent venligst...</p>
         </div>
-        <div class="HeroSection">    
+        <div class="HeroSection" v-if="!resultData && !isLoading">    
             <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
             <p class="HeroSection__text__p">Find ud af, hvordan din hjemmeside rangerer i søgninger og få tips til forbedring.</p>
         </div>
+        <div class="HeroSection__text__link">
         <p class="HeroSection__text__pbold">Link til hjemmeside:</p>
+        </div>
         <div class="HeroSection__button--SEO">
-            <input type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt linket til den side du vil teste..." />
+            <input type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt dit fulde link her..." />
             <button class="btn__green" type="submit" :disabled="isLoading" id="submit-btn" @click="fetchPageSpeedData">{{ isLoading ? 'Indlæser...' : 'Tjek min SEO' }}</button>
         </div>
     </main>
@@ -104,12 +106,15 @@ const fetchPageSpeedData = async () => {
     margin-top: 1.3rem;
 }
 
+.HeroSection__text__link {
+    background-color: $color-foam-blue;
+}
+
 .HeroSection__text__pbold {
     color: $color-kelp-green;
     padding-left: 2rem;
     padding-bottom: 1rem;
     font-weight: 450;
-    background-color: $color-foam-blue;
 }
 
 .HeroSection__button--SEO {
@@ -226,18 +231,16 @@ circle {
 }
 
 @media (min-width: 1200px) {
-    .HeroSection {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
+
         .HeroSection__text__p {
-            margin-right: 0rem;
+            display: flex;
+            flex-direction: column;
+            margin-left: 9.375rem;
         }
     
         .HeroSection__button--SEO {
             flex-direction: row;
-            gap: 1rem; 
+            justify-content: start;
         }
 
         .btn__green {
@@ -247,6 +250,15 @@ circle {
 
         input {
             width: 25rem;
+            margin-left: 9.375rem;
+        }
+
+        .HeroSection__text__pbold {
+            margin-left: 9.375rem;
+        }
+
+        .HeroSection__text__h1 {
+            margin-left: 9.375rem;
         }
     }
 </style>
