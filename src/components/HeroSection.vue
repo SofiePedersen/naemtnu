@@ -91,8 +91,6 @@ const fetchPageSpeedData = async () => {
 <style lang="scss" scoped>
 @import "../assets/main.scss";
 
-
-
 .HeroSection {
     display: flex;
     flex-direction: column;
@@ -178,7 +176,7 @@ input {
     width: 20rem;
     height: 20rem;
     margin-top: 3rem;
-    margin-left: 1.5rem;
+    margin-left: 1.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -278,21 +276,32 @@ circle {
             padding-left: 1rem;
             padding-right: 1rem;
             display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             background-color: $color-foam-blue;
             padding-bottom: 4rem;
         }
 
         input {
-            width: 80%;
+            width: 50%;
+        }
+
+        .HeroSection__text__pbold {
+            align-items: start;
         }
 
         .btn__green {
             align-items: center;
             justify-content: center;
         }
+
+        .btn__white {
+            align-items: center;
+            justify-content: center;
+        }
+
 
 }
 
@@ -320,14 +329,6 @@ circle {
             flex-direction: row;
             align-items: start;
             padding-bottom: 10rem;
-        }
-
-        .btn__green {
-            width: 20%;
-        }
-
-        .btn__white {
-            width: 20%;
         }
 
         .HeroSection__text__pbold {
