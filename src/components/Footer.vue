@@ -43,22 +43,25 @@ import SMVDanmark from "@/assets/images/medlem_af_smvdanmark_white.webp";
 
         <div class="footer__content--social">
           <div class="footer__content--links">
-            <a href="https://www.facebook.com" target="_blank">
+            <a href="https://www.facebook.com/naemt.nu" target="_blank">
               <img :src="Facebook" alt="Facebook" />
             </a>
-            <a href="https://www.instagram.com" target="_blank">
+            <a href="https://www.instagram.com/naemt.nu/" target="_blank">
               <img :src="Instagram" alt="Instagram" />
             </a>
-            <a href="https://www.linkedin.com" target="_blank">
+            <a
+              href="https://www.linkedin.com/company/naemt-nu/posts/?feedView=all"
+              target="_blank"
+            >
               <img :src="Linkedin" alt="LinkedIn" />
             </a>
-            <a href="https://www.youtube.com" target="_blank">
+            <a href="https://www.youtube.com/@naemtnu" target="_blank">
               <img :src="Youtube" alt="YouTube" />
             </a>
           </div>
           <div class="footer__content--links">
-            <a href="/privatlivspolitik">Privatlivspolitik</a>
-            <a href="/cookiepolitik">Cookiepolitik</a>
+            <a href="https://naemt.nu/privatlivspolitik/">Privatlivspolitik</a>
+            <a href="https://naemt.nu/cookiepolitik/">Cookiepolitik</a>
           </div>
         </div>
       </div>
