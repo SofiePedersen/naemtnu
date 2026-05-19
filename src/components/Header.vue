@@ -25,6 +25,16 @@ header {
   width: 9.7rem;
 }
 
+/* ─── Tablet ───────────────────────────────── */
+
+@media (min-width: 768px) {
+  .logo {
+    width: 13.25rem;
+  }
+}
+
+/* ─── Desktop ─────────────────────────────── */
+
 @media (min-width: 1200px) {
   header {
     padding-left: 9.375rem;
