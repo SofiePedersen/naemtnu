@@ -211,7 +211,7 @@ circle {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-left: 2.5rem;
+      margin-left: 3.5rem;
       margin-right: 2rem;
       margin-bottom: 3rem;
       width: 15rem;
@@ -259,7 +259,7 @@ circle {
             display: flex;
             flex-direction: column;
             margin-left: 9.375rem;
-            margin-right: 37rem;
+            margin-right: 80rem;
         }
     
         .HeroSection__button--SEO {
@@ -268,7 +268,7 @@ circle {
         }
 
         .btn__green {
-            margin-right: 25rem;
+            margin-right: 2rem;
             margin-left: 1rem;
         }
 
@@ -282,6 +282,10 @@ circle {
         }
 
         .HeroSection__text__h1 {
+            margin-left: 9.375rem;
+        }
+
+        .HeroSection__text__h2 {
             margin-left: 9.375rem;
         }
 
