@@ -91,7 +91,8 @@ const fetchPageSpeedData = async () => {
 .HeroSection {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     background-color: $color-foam-blue;
 }
 
@@ -100,10 +101,10 @@ const fetchPageSpeedData = async () => {
     color: $color-kelp-green;
     margin-bottom: 1rem;
     margin-right: 1rem;
+    padding-top: 2rem;
 }
 
 .HeroSection__text__h2 {
-    text-align: center;
     color: $color-kelp-green;
     margin-bottom: 1rem;
     margin-right: 1rem;
@@ -120,12 +121,15 @@ const fetchPageSpeedData = async () => {
 
 .HeroSection__text__pbold {
     color: $color-kelp-green;
-    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-left: 1rem;
     padding-bottom: 1rem;
     font-weight: 450;
 }
 
 .HeroSection__button--SEO {
+    padding-left: 1rem;
+    padding-right: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -135,13 +139,15 @@ const fetchPageSpeedData = async () => {
 }
 
 input {
-    padding: 2rem;
-    border: 1px solid black;
+    font-family: 'Montserrat';
+    font-style: italic;
+    padding: 1.5rem;
+    border: 1px solid $color-kelp-green;
     border-radius: 50px;
-    width: 92%;
-    font-size: 20px;
+    width: 100%;
+    font-size: 0.875rem;
     margin-bottom: 0.5rem;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    box-shadow: 4px 4px 4px rgba($color-kelp-green, 0.15);
 }
 
 .btn__green {
@@ -152,7 +158,7 @@ input {
 .wrapper {
     width: 20rem;
     height: 20rem;
-    margin-left: 0.4rem;
+    margin-left: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -205,7 +211,7 @@ circle {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-left: 2rem;
+      margin-left: 2.5rem;
       margin-right: 2rem;
       margin-bottom: 3rem;
       width: 15rem;
