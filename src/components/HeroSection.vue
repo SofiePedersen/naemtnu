@@ -12,6 +12,10 @@ const number = ref(0);
 const CIRCUMFERENCE = 911; 
 let intervalId = null;
 
+const reloadPage = () => {
+  window.location.reload();
+};
+
 intervalId = setInterval(() => {
     if (resultData.value) {
         const score = Math.round(resultData.value.lighthouseResult.categories.performance.score * 100);
@@ -48,37 +52,36 @@ const fetchPageSpeedData = async () => {
 
 <template>
     <main>
-        <div class="HeroSection" v-if="resultData">
-                <div class="wrapper">
-                    <div class="outer">
-                        <div class="inner">
-                            <div id="number">{{ number }}</div>
+        <div class="HeroSection__wrapper">
+            <div class="HeroSection" v-if="!resultData && !isLoading">    
+                <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
+                <p class="HeroSection__text__p">Find ud af, hvordan din hjemmeside rangerer i søgninger og få tips til forbedring.</p>
+            </div>
+            <div class="HeroSection" v-if="resultData">
+                <h2 class="HeroSection__text__h1">Hvad betyder din score?</h2>
+                <p class="HeroSection__text__p">Dit fundament er lagt, men der er altid plads til optimering. Ved at finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at din forretning bliver fundet af de helt rigtige kunder, når de søger efter dine ydelser.</p>
+                    <div class="wrapper">
+                        <div class="outer">
+                            <div class="inner">
+                                <div id="number">{{ number }}</div>
+                            </div>
                         </div>
+                        <svg width="20rem" height="20rem" viewBox="0 0 320 320">
+                            <circle cx="160" cy="160" r="145" :style="{ strokeDashoffset: currentOffset }" />
+                        </svg>
                     </div>
-                    <svg width="20rem" height="20rem" viewBox="0 0 320 320">
-                        <circle cx="160" cy="160" r="145" :style="{ strokeDashoffset: currentOffset }" />
-                    </svg>
-                </div>
-            <h2 class="HeroSection__text__h2">SEO Score</h2>
-        </div>
-        <div v-if="isLoading" class="HeroSection">
-            <span class="loader"></span>
-            <p class="HeroSection__text__p">Indlæser din seo, vent venligst...</p>
-        </div>
-        <div class="HeroSection" v-if="!resultData && !isLoading">    
-            <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
-            <p class="HeroSection__text__p">Find ud af, hvordan din hjemmeside rangerer i søgninger og få tips til forbedring.</p>
-        </div>
-        <div v-else-if="resultData && !isLoading" class="HeroSection">
-            <h2 class="HeroSection__text__h1">Hvad betyder din score?</h2>
-            <p class="HeroSection__text__p">Dit fundament er lagt, men der er altid plads til optimering. Ved at finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at din forretning bliver fundet af de helt rigtige kunder, når de søger efter dine ydelser.</p>
-        </div>
-        <div class="HeroSection__text__link">
-        <p class="HeroSection__text__pbold">Link til hjemmeside:</p>
-        </div>
-        <div class="HeroSection__button--SEO">
-            <input type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt dit fulde link her..." />
-            <button class="btn__green" type="submit" :disabled="isLoading" id="submit-btn" @click="fetchPageSpeedData">{{ isLoading ? 'Indlæser...' : 'Tjek min SEO' }}</button>
+                <h2 class="HeroSection__text__h2">SEO Score</h2>
+            </div>
+            <div v-if="isLoading" class="HeroSection">
+                <span class="loader"></span>
+            </div>
+            <div class="HeroSection__button--SEO">
+                <p v-if="!resultData && !isLoading" class="HeroSection__text__pbold">Link til hjemmeside:</p>
+                <input v-if="!resultData && !isLoading" type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt dit fulde link her..." />
+                <button v-if="!resultData" class="btn__green" type="submit" :disabled="isLoading" id="submit-btn" @click="fetchPageSpeedData">{{ isLoading ? 'Indlæser...' : 'Tjek min SEO' }}</button>
+                <a href="https://www.linkedin.com/company/naemt-nu/posts/?feedView=all"><button v-if="resultData" class="btn__green" type="submit" :disabled="isLoading" id="submit-btn">Kontakt os</button></a>
+                <button v-if="resultData" class="btn__white" type="submit" id="submit-btn" @click="reloadPage">Søg igen</button>
+            </div>
         </div>
     </main>
 </template>
@@ -88,12 +91,20 @@ const fetchPageSpeedData = async () => {
 <style lang="scss" scoped>
 @import "../assets/main.scss";
 
+
+
 .HeroSection {
     display: flex;
     flex-direction: column;
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: $color-foam-blue;
+}
+
+.HeroSection__image {
+    display: none;
+    position: relative;
+    transform: rotateY(180deg);
 }
 
 .HeroSection__text__h1 {
@@ -106,8 +117,7 @@ const fetchPageSpeedData = async () => {
 
 .HeroSection__text__h2 {
     color: $color-kelp-green;
-    margin-bottom: 1rem;
-    margin-right: 1rem;
+    text-align: center;
 }
 
 .HeroSection__text__p {
@@ -119,23 +129,23 @@ const fetchPageSpeedData = async () => {
     background-color: $color-foam-blue;
 }
 
-.HeroSection__text__pbold {
-    color: $color-kelp-green;
-    padding-top: 2rem;
-    padding-left: 1rem;
-    padding-bottom: 1rem;
-    font-weight: 450;
-}
-
 .HeroSection__button--SEO {
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-top: 3rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    gap: 1rem;
     background-color: $color-foam-blue;
     padding-bottom: 4rem;
+}
+
+.HeroSection__text__pbold {
+    color: $color-kelp-green;
+    justify-content: start;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    font-weight: 450;
 }
 
 input {
@@ -153,11 +163,21 @@ input {
 .btn__green {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn__white {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapper {
     width: 20rem;
     height: 20rem;
+    margin-top: 3rem;
     margin-left: 1.5rem;
     display: flex;
     justify-content: center;
@@ -250,35 +270,68 @@ circle {
 }
 
 @media (min-width: 768px) {
+        .wrapper {
+            padding-left: 21rem;
+        }
+
+        .HeroSection__button--SEO {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: $color-foam-blue;
+            padding-bottom: 4rem;
+        }
+
+        input {
+            width: 80%;
+        }
+
+        .btn__green {
+            align-items: center;
+            justify-content: center;
+        }
 
 }
 
 @media (min-width: 1200px) {
 
+        .HeroSection {
+            padding: 0;
+        }
+
+        .HeroSection__image {
+            display: flex;
+            position: absolute;
+            justify-content: end;
+        }
+
         .HeroSection__text__p {
             display: flex;
             flex-direction: column;
             margin-left: 9.375rem;
-            margin-right: 80rem;
         }
     
         .HeroSection__button--SEO {
-            flex-direction: row;
             justify-content: start;
+            padding-left: 9.375rem;
+            flex-direction: row;
+            align-items: start;
+            padding-bottom: 10rem;
         }
 
         .btn__green {
-            margin-right: 2rem;
-            margin-left: 1rem;
+            width: 20%;
         }
 
-        input {
-            width: 25rem;
-            margin-left: 11rem;
+        .btn__white {
+            width: 20%;
         }
 
         .HeroSection__text__pbold {
-            margin-left: 9.375rem;
+            padding-left: 0;
         }
 
         .HeroSection__text__h1 {
@@ -286,7 +339,8 @@ circle {
         }
 
         .HeroSection__text__h2 {
-            margin-left: 9.375rem;
+            margin-right: 9.375rem;
+            text-align: end;
         }
 
         .loader {
@@ -294,7 +348,10 @@ circle {
         }
 
         .wrapper {
-            margin-left: 40rem;
+            text-align: end;
+            display: flex;
+            padding-left: 50rem;
+            margin-right: 9.375rem;
         }
     }
 </style>
