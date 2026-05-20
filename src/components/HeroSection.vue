@@ -54,19 +54,12 @@ const fetchPageSpeedData = async () => {
     <div class="HeroSection__wrapper">
       <div class="HeroSection" v-if="!resultData && !isLoading">
         <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
-        <p class="HeroSection__text__p">
-          Find ud af, hvordan din hjemmeside rangerer i søgninger og få tips til
-          forbedring.
-        </p>
+        <p class="HeroSection__text__p">Find ud af, hvordan din hjemmeside rangerer i søgninger og få tips til forbedring.</p>
       </div>
       <div class="HeroSection" v-if="resultData">
         <h2 class="HeroSection__text__h1">Hvad betyder din score?</h2>
-        <p class="HeroSection__text__p">
-          Dit fundament er lagt, men der er altid plads til optimering. Ved at
-          finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at
-          din forretning bliver fundet af de helt rigtige kunder, når de søger
-          efter dine ydelser.
-        </p>
+        <p class="HeroSection__text__p">Dit fundament er lagt, men der er altid plads til optimering. Ved at finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at 
+            din forretning bliver fundet af de helt rigtige kunder, når de søger efter dine ydelser.</p>
         <div class="wrapper">
           <div class="outer">
             <div class="inner">
@@ -74,12 +67,7 @@ const fetchPageSpeedData = async () => {
             </div>
           </div>
           <svg width="20rem" height="20rem" viewBox="0 0 320 320">
-            <circle
-              cx="160"
-              cy="160"
-              r="145"
-              :style="{ strokeDashoffset: currentOffset }"
-            />
+            <circle cx="160" cy="160" r="145" :style="{ strokeDashoffset: currentOffset }"/>
           </svg>
         </div>
         <h2 class="HeroSection__text__h2">SEO Score</h2>
@@ -88,46 +76,11 @@ const fetchPageSpeedData = async () => {
         <span class="loader"></span>
       </div>
       <div class="HeroSection__button--SEO HeroSection__button--SEOpreloaded">
-        <p v-if="!resultData && !isLoading" class="HeroSection__text__pbold">
-          Link til hjemmeside:
-        </p>
-        <input
-          v-if="!resultData && !isLoading"
-          type="text"
-          v-model="targetUrl"
-          @keydown.enter="fetchPageSpeedData"
-          placeholder="Indsæt dit fulde link her..."
-        />
-        <button
-          v-if="!resultData"
-          class="btn__green btn__SEO"
-          type="submit"
-          :disabled="isLoading"
-          id="submit-btn"
-          @click="fetchPageSpeedData"
-        >
-          {{ isLoading ? "Indlæser..." : "Tjek min SEO" }}
-        </button>
-        <a href="https://www.linkedin.com/company/naemt-nu/posts/?feedView=all"
-          ><button
-            v-if="resultData"
-            class="btn__green"
-            type="submit"
-            :disabled="isLoading"
-            id="submit-btn"
-          >
-            Kontakt os
-          </button></a
-        >
-        <button
-          v-if="resultData"
-          class="btn__white"
-          type="submit"
-          id="submit-btn"
-          @click="reloadPage"
-        >
-          Søg igen
-        </button>
+        <p v-if="!resultData && !isLoading" class="HeroSection__text__pbold">Link til hjemmeside:</p>
+        <input v-if="!resultData && !isLoading" type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt dit fulde link her..."/>
+        <button v-if="!resultData" class="btn__green btn__SEO" type="submit" :disabled="isLoading" id="submit-btn" @click="fetchPageSpeedData">{{ isLoading ? "Indlæser..." : "Tjek min SEO" }}</button>
+        <a href="https://www.linkedin.com/company/naemt-nu/posts/?feedView=all"><button v-if="resultData" class="btn__green" type="submit":disabled="isLoading" id="submit-btn">Kontakt os</button></a>
+        <button v-if="resultData" class="btn__white" type="submit" id="submit-btn" @click="reloadPage">Søg igen</button>
       </div>
     </div>
   </main>
