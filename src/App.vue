@@ -7,12 +7,14 @@ import Contact from "./components/Contact.vue";
 import Reviews from "./components/Reviews.vue";
 import Packs from "./components/Packs.vue";
 import SeoProcess from "./components/SeoProcess.vue";
+import NEWHeroSection from "./components/NEWHeroSection.vue";
 </script>
 
 <template>
   <main>
     <Header />
-    <HeroSection />
+    <!-- <HeroSection /> -->
+    <NEWHeroSection />
     <SeoProcess />
     <Packs />
     <Reviews />

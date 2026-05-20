@@ -136,6 +136,10 @@ const fetchPageSpeedData = async () => {
 <style lang="scss" scoped>
 @import "../assets/main.scss";
 
+*{
+  border: 1px solid black;
+}
+
 .HeroSection__wrapper {
   background-color: $color-foam-blue;
   padding-left: 1rem;
