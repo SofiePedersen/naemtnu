@@ -14,13 +14,11 @@ header {
   justify-content: start;
   background-color: $color-foam-blue;
   padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .logo {
-  margin-left: 2rem;
-  margin-right: 18.75rem;
-  margin-bottom: 3.75rem;
-  // jeg gav rem på 4 fordi størrelsen ellers blev helt ødelagt //
   height: 4rem;
   width: 9.7rem;
 }
@@ -39,10 +37,6 @@ header {
   header {
     padding-left: 9.375rem;
     padding-right: 9.375rem;
-  }
-
-  .logo {
-    margin-left: 0rem;
   }
 }
 </style>
