@@ -411,21 +411,35 @@ circle {
   .HeroSection__wrapper {
     padding-left: 9.375rem;
     padding-right: 9.375rem;
+    padding-top: 10rem;
+  }
+
+  .HeroSection {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+  }
+
+  .HeroSection__button--SEO {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wrapper {
+    flex-shrink: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .result-btns-data {
+    justify-content: flex-start;
   }
 
   .loader {
     margin: 2rem;
-  }
-
-  .HeroSection {
-    padding-bottom: 1rem;
-  }
-
-  .HeroSection__text__p {
-    align-self: flex-start;
-    text-align: left;
-    font-size: 1.5rem;
-    width: 65%;
+    align-self: center;
   }
 }
 </style>
