@@ -163,6 +163,7 @@ input {
     padding-bottom: 1.5rem;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .btn__white {
@@ -269,7 +270,9 @@ circle {
 
 @media (min-width: 768px) {
         .wrapper {
-            padding-left: 21rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .HeroSection__button--SEO {
