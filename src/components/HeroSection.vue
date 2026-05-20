@@ -79,8 +79,10 @@ const fetchPageSpeedData = async () => {
         <p v-if="!resultData && !isLoading" class="HeroSection__text__pbold">Link til hjemmeside:</p>
         <input v-if="!resultData && !isLoading" type="text" v-model="targetUrl" @keydown.enter="fetchPageSpeedData" placeholder="Indsæt dit fulde link her..."/>
         <button v-if="!resultData" class="btn__green btn__SEO" type="submit" :disabled="isLoading" id="submit-btn" @click="fetchPageSpeedData">{{ isLoading ? "Indlæser..." : "Tjek min SEO" }}</button>
-        <a href="https://www.linkedin.com/company/naemt-nu/posts/?feedView=all"><button v-if="resultData" class="btn__green" type="submit":disabled="isLoading" id="submit-btn">Kontakt os</button></a>
-        <button v-if="resultData" class="btn__white" type="submit" id="submit-btn" @click="reloadPage">Søg igen</button>
+        <div class="result-btns-data">
+          <a class="btn__green" v-if="resultData" type="submit":disabled="isLoading" id="submit-btn" href="https://www.linkedin.com/company/naemt-nu/posts/?feedView=all">Kontakt os</a>
+          <button v-if="resultData" class="btn__white" type="submit" id="submit-btn" @click="reloadPage">Søg igen</button>
+        </div>
       </div>
     </div>
   </main>
@@ -92,7 +94,7 @@ const fetchPageSpeedData = async () => {
 .HeroSection {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -106,21 +108,21 @@ const fetchPageSpeedData = async () => {
 }
 
 .HeroSection__text__h1 {
-  text-align: start;
+  align-self: flex-start;
+  text-align: left;
   color: $color-kelp-green;
   margin-bottom: 1rem;
-  margin-right: 1rem;
   padding-top: 2rem;
 }
 
 .HeroSection__text__h2 {
   color: $color-kelp-green;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .HeroSection__text__p {
   color: $color-kelp-green;
-  margin-top: 1.3rem;
 }
 
 .HeroSection__text__link {
@@ -130,13 +132,13 @@ const fetchPageSpeedData = async () => {
 .HeroSection__button--SEO {
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 3rem;
+  // padding-top: 3rem;
+  padding-bottom: 3rem;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   background-color: $color-foam-blue;
-  padding-bottom: 4rem;
 }
 
 .HeroSection__text__pbold {
@@ -159,13 +161,16 @@ input {
   box-shadow: 4px 4px 4px rgba($color-kelp-green, 0.15);
 }
 
-.btn__green {
-  width: 100%;
+.btn__green--inner {
+  border: none;
+  background-color: none;
 }
 
-.btn__white {
+.result-btns-data {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  gap: 1rem;
 }
 
 .wrapper {
@@ -184,8 +189,8 @@ input {
   width: 20rem;
   height: 20rem;
   box-shadow:
-    -1px -1px 5px 0px rgba(0, 0, 0, 0.25),
-    3px 3px 5px rgba(0, 0, 0, 0.25);
+    -1px -1px 5px 0px rgba($color-kelp-green, 0.15),
+    3px 3px 5px rgba($color-kelp-green, 0.15);
   border-radius: 50%;
   padding: 1.875rem;
 }
@@ -194,8 +199,8 @@ input {
   width: 16.25rem;
   height: 16.25rem;
   box-shadow:
-    inset -1px -1px 5px 0px rgba(0, 0, 0, 0.25),
-    inset 3px 3px 5px rgba(0, 0, 0, 0.25);
+    inset -1px -1px 5px 0px rgba($color-kelp-green, 0.15),
+    inset 3px 3px 5px rgba($color-kelp-green, 0.15);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -270,8 +275,46 @@ circle {
 
 @media (max-width: 360px) {
   .HeroSection {
-    padding: 1;
-    padding-left: 1rem;
+    padding: 0rem 1rem;
+  }
+
+  .HeroSection__button--SEOpreloaded {
+    padding: 0rem 1rem;
+    gap: 0rem;
+  }
+  
+  .result-btns-data {
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+
+    .btn__green, .btn__white {
+      padding: 1rem 1.5rem;
+      width: 50%;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .HeroSection {
+    padding: 0rem 1rem;
+  }
+
+  .HeroSection__button--SEOpreloaded {
+    padding: 0rem 1rem;
+    gap: 0rem;
+  }
+  
+  .result-btns-data {
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+
+    .btn__green, .btn__white {
+      padding: 1rem 1.5rem;
+      width: 50%;
+      font-size: 0.875rem;
+      text-align: center;
+    }
   }
 }
 
@@ -313,6 +356,7 @@ circle {
     align-items: center;
     justify-content: center;
   }
+
 }
 
 @media (min-width: 1200px) {
