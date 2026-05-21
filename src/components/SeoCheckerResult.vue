@@ -5,6 +5,8 @@ const props = defineProps({
   seoScore: Number
 });
 
+const emit = defineEmits(["goBack"]);
+
 /* Google PageSpeed score: 0.92 -> 92 */
 const scorePercent = computed(() =>
   Math.round(props.seoScore * 100)
@@ -20,28 +22,64 @@ const circleFill = computed(() =>
 </script>
 
 <template>
-  <div>
-    <h2>Hvad betyder din score?</h2>
-    <p>
-      Dit fundament er lagt, men der er altid plads til optimering.
-      Ved at finjustere dit indhold og styrke din tekniske SEO, 
-      kan vi sikre, at din forretning bliver fundet af de helt
-      rigtige kunder, når de søger efter dine ydelser.
-    </p>
-  </div>
-  <div class="score-circle" :style="{ background: circleFill }">
-    <div class="inner-circle">
-      {{ scorePercent }}
+  <div class="result-wrapper">
+    <div class="result__text-wrapper">
+      <h2 class="result__heading">Hvad betyder din score?</h2>
+      <p class="result__text">
+        Dit fundament er lagt, men der er altid plads til optimering.
+        Ved at finjustere dit indhold og styrke din tekniske SEO, 
+        kan vi sikre, at din forretning bliver fundet af de helt
+        rigtige kunder, når de søger efter dine ydelser.
+      </p>
     </div>
-  </div>
-  <div>
-    <button></button>
-    <a></a>
+    <div class="score-circle" :style="{ background: circleFill }">
+      <div class="inner-circle">
+        {{ scorePercent }}
+      </div>
+    </div>
+    <div class="btn__wrapper">
+      <a class="btn__green" href="https://naemt.nu/kontakt/" target="_blank" rel="noopener">
+        Kontakt os
+      </a>
+      <button class="btn__white" @click="emit('goBack')">
+        Søg igen
+      </button>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 @import '../assets/main.scss';
+
+.result-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result__heading {
+  margin-bottom: 1rem;
+  color: $color-kelp-green;
+}
+
+.result__text {
+  margin-bottom: 2rem;
+  color: $color-kelp-green;
+}
+
+.btn__wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .btn__green,
+  .btn__white {
+    text-align: center;
+    width: 70%;
+  }
+}
 
 .score-circle {
   width: 10rem;
@@ -55,6 +93,7 @@ const circleFill = computed(() =>
 
   transition: 0.3s ease;
   box-shadow: 0px 0px 4px rgba($color-kelp-green, 0.2);
+  margin-bottom: 2rem;
 }
 
 .inner-circle {

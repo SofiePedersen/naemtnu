@@ -30,6 +30,11 @@ const fetchPageSpeedData = async () => {
     isLoading.value = false
   }
 };
+
+const goBack = () => {
+  result.value = 0;
+  targetUrl.value = "";
+};
 </script>
 
 <template>
@@ -64,7 +69,7 @@ const fetchPageSpeedData = async () => {
 
     <!-- #3 - resulstat komponent -->
     <div class="section-wrapper--result" v-show="result !== 0">
-      <SeoCheckerResult :seoScore="result" />
+      <SeoCheckerResult :seoScore="result" @goBack="goBack" />
     </div>
   </main>
 </template>
