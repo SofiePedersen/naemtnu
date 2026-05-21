@@ -2,22 +2,21 @@
 import { computed } from "vue";
 
 const props = defineProps({
-  seoScore: Number
+  seoScore: Number,
 });
 
 const emit = defineEmits(["goBack"]);
 
 /* Google PageSpeed score: 0.92 -> 92 */
-const scorePercent = computed(() =>
-  Math.round(props.seoScore * 100)
-);
+const scorePercent = computed(() => Math.round(props.seoScore * 100));
 
 /* Convert percentage into degrees 92% -> 331.2deg */
-const circleFill = computed(() =>
-  `conic-gradient(
+const circleFill = computed(
+  () =>
+    `conic-gradient(
     #1c4d48 ${scorePercent.value * 3.6}deg,
     #F8F8F8 0deg
-  )`
+  )`,
 );
 </script>
 
@@ -26,10 +25,10 @@ const circleFill = computed(() =>
     <div class="result__text-wrapper">
       <h2 class="result__heading">Hvad betyder din score?</h2>
       <p class="result__text">
-        Dit fundament er lagt, men der er altid plads til optimering.
-        Ved at finjustere dit indhold og styrke din tekniske SEO, 
-        kan vi sikre, at din forretning bliver fundet af de helt
-        rigtige kunder, når de søger efter dine ydelser.
+        Dit fundament er lagt, men der er altid plads til optimering. Ved at
+        finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at din
+        forretning bliver fundet af de helt rigtige kunder, når de søger efter
+        dine ydelser.
       </p>
     </div>
     <div class="score-circle" :style="{ background: circleFill }">
@@ -38,18 +37,21 @@ const circleFill = computed(() =>
       </div>
     </div>
     <div class="btn__wrapper">
-      <a class="btn__green" href="https://naemt.nu/kontakt/" target="_blank" rel="noopener">
+      <a
+        class="btn__green"
+        href="https://naemt.nu/kontakt/"
+        target="_blank"
+        rel="noopener"
+      >
         Kontakt os
       </a>
-      <button class="btn__white" @click="emit('goBack')">
-        Søg igen
-      </button>
+      <button class="btn__white" @click="emit('goBack')">Søg igen</button>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-@import '../assets/main.scss';
+@import "../assets/main.scss";
 
 .result-wrapper {
   display: flex;
@@ -113,5 +115,15 @@ const circleFill = computed(() =>
   box-shadow: inset 0 0 4px rgba($color-kelp-green, 0.2);
 
   color: $color-kelp-green;
+}
+
+/* ─── Tablet ───────────────────────────────── */
+
+@media (min-width: 768px) {
+}
+
+/* ─── Desktop ───────────────────────────────── */
+
+@media (min-width: 1200px) {
 }
 </style>
