@@ -34,60 +34,105 @@ const fetchPageSpeedData = async () => {
 
 <template>
   <main>
-
     <div v-show="result == 0 && !isLoading " class="section-wrapper">
+      <div>
         <h1 class="section-wrapper__heading" >Tjek din hjemmesides SEO</h1>
         <h2 class="section-wrapper__sub-heading">
           Tjek om din hjemmeside har grundlæggende SEO i orden. Det giver dig en hurtig fornemmelse af, hvor din
           hjemmeside står nu.
         </h2>
-
-        <p class="section-wrapper__input-label">
-          Link til hjemmeside:
-        </p>
-        
-      <div>
-        <input v-model="targetUrl" type="text" placeholder="indsæt linket til hjemmesiden du vu vil teste">
-        <button class="btn__green" id="submit-btn" @click="fetchPageSpeedData">
-          search test url now
-        </button>
       </div>
-
+        
+      <div class="section-wrapper--bottom">
+        <p class="section-wrapper__p">
+            Link til hjemmeside:
+        </p>
+        <div>
+          <input class="section-wrapper__input" v-model="targetUrl" type="text" placeholder="Indsæt linket til hjemmesiden du vil teste...">
+          <button class="btn__green" id="submit-btn" @click="fetchPageSpeedData">
+            Tjek min SEO
+          </button>
+        </div>
+      </div>
+      <!-- #2 - loading fallback -->
     </div>
-
-
-
-
-
-
-
-    <!-- #2 - loading fallback -->
-    <div class="loader" v-show="isLoading">
+    
+    <div v-show="isLoading" class="section-wrapper--loader">
+      <div class="loader"></div>
+      <p>Vi undersøger lige siden! <br> Dette kan tage nogle sekunder...</p>
     </div>
 
     <!-- #3 - resulstat komponent -->
-    <div v-show="result !== 0">
+    <div class="section-wrapper--result" v-show="result !== 0">
       <SeoCheckerResult :seoScore="result" />
     </div>
-
-
   </main>
 </template>
 
 <style scoped lang="scss">
 @import '../assets/main.scss';
 
+/* ─── Wrapper ─────────────────────────────── */
 
+.section-wrapper,
+.section-wrapper--loader,
+.section-wrapper--result {
+  min-height: 30rem;
+  padding: 3rem 1rem;
+  background-color: $color-foam-blue;
+}
 
+.section-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.section-wrapper__heading {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: $color-kelp-green;
+}
 
+.section-wrapper__sub-heading {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  font-family: $font-montserrat;
+  font-weight: normal;
+  color: $color-kelp-green;
+}
 
+.section-wrapper__p {
+  color: $color-kelp-green;
+}
 
+.section-wrapper__input {
+  padding: 1.25rem;
+  width: 100%;
+  margin: 1rem 0rem;
+  border-radius: 300rem;
+  border: 1px solid $color-kelp-green;
+}
 
+.section-wrapper__input::placeholder {
+  font-style: italic;
+  color: $color-charcoal-black;
+  opacity: 0.5;
+}
 
+/* ─── Loader ─────────────────────────────── */
 
+.section-wrapper--loader {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0rem;
+}
 
-
+.section-wrapper--loader p {
+  color: $color-kelp-green;
+  font-size: 1.125rem;
+  text-align: center;
+}
 
 .loader {
   margin: auto;
