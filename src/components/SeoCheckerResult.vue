@@ -137,14 +137,6 @@ const circleFill = computed(
 /* ─── Desktop ───────────────────────────────── */
 
 @media (min-width: 1200px) {
-  // .result__circle--wrapper {
-  //   width: 70%;
-  // }
-
-  // .btn__wrapper {
-  //   flex-direction: row;
-  // }
-
   .result-wrapper {
     width: 100%;
     display: grid;
@@ -166,7 +158,6 @@ const circleFill = computed(
 
   .score-circle {
     grid-column: 2;
-    grid-row: 1 / span 2;
     width: 15rem;
     height: 15rem;
     position: relative;
