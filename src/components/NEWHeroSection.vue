@@ -1,5 +1,5 @@
 <script setup>
-import Bubbles from "@/assets/images/decorative-bubbles-hero.svg";
+import Bubbles from "@/assets/images/hero-section-bubbles.webp";
 import { ref } from "vue";
 
 import SeoCheckerResult from "./SeoCheckerResult.vue";
@@ -77,11 +77,7 @@ const goBack = () => {
     <div class="section-wrapper--result" v-show="result !== 0">
       <SeoCheckerResult :seoScore="result" @goBack="goBack" />
     </div>
-    <img
-      :src="Bubbles"
-      alt="Billede med de 3 gutter fra næmt"
-      class="herosection__picture"
-    />
+    <img :src="Bubbles" alt="Billede med de 3 gutter fra næmt" class="herosection__picture"/>
   </main>
 </template>
 
