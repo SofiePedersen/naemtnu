@@ -74,20 +74,24 @@ import Sebastian from "@/assets/images/sebastian.webp";
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .contact__wrapper--sebastian {
   width: 100%;
-  margin-top: 2rem;
 
   display: flex;
   justify-content: center;
 
   img {
-    width: 85%;
+    width: 60%;
     height: auto;
   }
+}
+
+p,
+h4 {
+  color: $color-charcoal-black;
 }
 
 /* ─── Tablet ───────────────────────────────── */
@@ -102,7 +106,6 @@ import Sebastian from "@/assets/images/sebastian.webp";
 
   .contact__content {
     width: 65%;
-    margin-bottom: 1rem;
   }
 
   .contact__wrapper--sebastian {
@@ -129,6 +132,7 @@ import Sebastian from "@/assets/images/sebastian.webp";
   }
 
   .contact__wrapper--sebastian {
+    margin-top: 2rem;
     img {
       width: 23.1rem;
       height: 35.25rem;

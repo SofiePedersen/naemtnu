@@ -1,5 +1,5 @@
 <script setup>
-import Bubbles from "@/assets/images/decorative-bubbles-hero.svg";
+import Bubbles from "@/assets/images/hero-section-bubbles.webp";
 import { ref } from "vue";
 
 import SeoCheckerResult from "./SeoCheckerResult.vue";
@@ -96,7 +96,6 @@ const goBack = () => {
 
 main {
   background-color: $color-foam-blue;
-  position: relative;
 }
 
 .section-wrapper,
@@ -148,7 +147,9 @@ main {
 
 .section-wrapper--loader {
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  width: 100%;
   padding-top: 0rem;
 }
 
@@ -196,21 +197,21 @@ main {
 @media (min-width: 1200px) {
   main {
     display: flex;
+    justify-content: space-between;
     padding-left: 9.375rem;
-    padding-right: 9.375rem;
   }
   .section-wrapper,
   .section-wrapper--loader,
   .section-wrapper--result {
     padding-top: 10rem;
-    padding-right: 8rem;
+    padding-right: 2rem;
     padding-left: 0rem;
     padding-bottom: 5rem;
   }
 
   .section-wrapper--bottom {
     .section-wrapper__input {
-      width: 45%;
+      width: 60%;
     }
     .btn__green {
       margin-left: 1rem;
@@ -220,10 +221,9 @@ main {
 
   .herosection__picture {
     display: block;
-    width: 30%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    width: 26rem;
+    height: 100%;
+    align-self: flex-end;
   }
 }
 </style>
