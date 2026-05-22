@@ -31,21 +31,23 @@ const circleFill = computed(
         dine ydelser.
       </p>
     </div>
-    <div class="score-circle" :style="{ background: circleFill }">
-      <div class="inner-circle">
-        {{ scorePercent }}
+    <div class="result__circle--wrapper">
+      <div class="score-circle" :style="{ background: circleFill }">
+        <div class="inner-circle">
+          {{ scorePercent }}
+        </div>
       </div>
-    </div>
-    <div class="btn__wrapper">
-      <a
-        class="btn__green"
-        href="https://naemt.nu/kontakt/"
-        target="_blank"
-        rel="noopener"
-      >
-        Kontakt os
-      </a>
-      <button class="btn__white" @click="emit('goBack')">Søg igen</button>
+      <div class="btn__wrapper">
+        <a
+          class="btn__green"
+          href="https://naemt.nu/kontakt/"
+          target="_blank"
+          rel="noopener"
+        >
+          Kontakt os
+        </a>
+        <button class="btn__white" @click="emit('goBack')">Søg igen</button>
+      </div>
     </div>
   </div>
 </template>
@@ -64,6 +66,13 @@ const circleFill = computed(
   color: $color-kelp-green;
 }
 
+.result__circle--wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .result__text {
   margin-bottom: 2rem;
   color: $color-kelp-green;
@@ -80,6 +89,7 @@ const circleFill = computed(
   .btn__white {
     text-align: center;
     width: 70%;
+    white-space: nowrap;
   }
 }
 
@@ -120,10 +130,78 @@ const circleFill = computed(
 /* ─── Tablet ───────────────────────────────── */
 
 @media (min-width: 768px) {
+  .result__circle--wrapper {
+    width: 60%;
+  }
 }
 
 /* ─── Desktop ───────────────────────────────── */
 
 @media (min-width: 1200px) {
+  // .result__circle--wrapper {
+  //   width: 70%;
+  // }
+
+  // .btn__wrapper {
+  //   flex-direction: row;
+  // }
+
+  .result-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: 6rem;
+  }
+
+  .result__text-wrapper {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .result__circle--wrapper {
+    display: contents;
+  }
+
+  .score-circle {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+
+    width: 17rem;
+    height: 17rem;
+
+    position: relative;
+  }
+
+  .score-circle::after {
+    content: "SEO Score";
+    position: absolute;
+    left: 50%;
+    bottom: -4rem;
+    transform: translateX(-50%);
+    color: $color-kelp-green;
+    font-family: $font-comfortaa;
+    font-size: 1.75rem;
+    white-space: nowrap;
+  }
+
+  .inner-circle {
+    width: 11.875rem;
+    height: 11.875rem;
+
+    font-size: 4rem;
+    font-weight: 400;
+  }
+
+  .btn__wrapper {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
 }
 </style>
