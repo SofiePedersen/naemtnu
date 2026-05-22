@@ -237,6 +237,7 @@ const infoTabs = [
     align-items: flex-end;
     gap: 2.5rem;
     padding: 4rem 9.375rem;
+    padding-bottom: 1rem;
   }
 
   .faq-wrapper__image-wrapper {
