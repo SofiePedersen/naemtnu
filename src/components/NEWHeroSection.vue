@@ -5,7 +5,8 @@ import { ref } from "vue";
 import SeoCheckerResult from "./SeoCheckerResult.vue";
 
 const apiKey = import.meta.env.VITE_API_TOKEN;
-const apiEndpoint = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
+const apiEndpoint =
+  "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
 const targetUrl = ref("");
 const result = ref(0);
 const isLoading = ref(false);
@@ -77,7 +78,11 @@ const goBack = () => {
     <div class="section-wrapper--result" v-show="result !== 0">
       <SeoCheckerResult :seoScore="result" @goBack="goBack" />
     </div>
-    <img :src="Bubbles" alt="Billede med de 3 gutter fra næmt" class="herosection__picture"/>
+    <img
+      :src="Bubbles"
+      alt="Billede med de 3 gutter fra næmt"
+      class="herosection__picture"
+    />
   </main>
 </template>
 
@@ -208,6 +213,9 @@ main {
       margin-left: 1rem;
       white-space: nowrap;
     }
+  }
+
+  .section-wrapper--loader {
   }
 
   .herosection__picture {
