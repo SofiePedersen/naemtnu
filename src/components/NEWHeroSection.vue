@@ -1,11 +1,11 @@
 <script setup>
-import Bubbles from "@/assets/images/hero-section-bubbles.webp";
+import Bubbles from "@/assets/images/decorative-bubbles-hero.svg";
 import { ref } from "vue";
 
 import SeoCheckerResult from "./SeoCheckerResult.vue";
 
 const apiKey = import.meta.env.VITE_API_TOKEN;
-const apiEndpoint ="https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
+const apiEndpoint = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
 const targetUrl = ref("");
 const result = ref(0);
 const isLoading = ref(false);
@@ -47,8 +47,17 @@ const goBack = () => {
       <div class="section-wrapper--bottom">
         <p class="section-wrapper__p">Link til hjemmeside:</p>
         <div class="section-input-button__wrapper">
-          <input class="section-wrapper__input" v-model="targetUrl" type="text" placeholder="Indsæt linket til hjemmesiden du vil teste..."/>
-          <button class="btn__green" id="submit-btn" @click="fetchPageSpeedData">
+          <input
+            class="section-wrapper__input"
+            v-model="targetUrl"
+            type="text"
+            placeholder="Indsæt linket til hjemmesiden du vil teste..."
+          />
+          <button
+            class="btn__green"
+            id="submit-btn"
+            @click="fetchPageSpeedData"
+          >
             Tjek min SEO
           </button>
         </div>
@@ -83,6 +92,7 @@ const goBack = () => {
 
 main {
   background-color: $color-foam-blue;
+  position: relative;
 }
 
 .section-wrapper,
@@ -134,9 +144,7 @@ main {
 
 .section-wrapper--loader {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  width: 100%;
   padding-top: 0rem;
 }
 
@@ -184,21 +192,21 @@ main {
 @media (min-width: 1200px) {
   main {
     display: flex;
-    justify-content: space-between;
     padding-left: 9.375rem;
+    padding-right: 9.375rem;
   }
   .section-wrapper,
   .section-wrapper--loader,
   .section-wrapper--result {
     padding-top: 10rem;
-    padding-right: 2rem;
+    padding-right: 8rem;
     padding-left: 0rem;
     padding-bottom: 5rem;
   }
 
   .section-wrapper--bottom {
     .section-wrapper__input {
-      width: 60%;
+      width: 45%;
     }
     .btn__green {
       margin-left: 1rem;
@@ -208,9 +216,10 @@ main {
 
   .herosection__picture {
     display: block;
-    width: 26rem;
-    height: 100%;
-    align-self: flex-end;
+    width: 30%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
 }
 </style>
