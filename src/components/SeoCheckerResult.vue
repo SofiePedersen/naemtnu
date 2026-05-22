@@ -22,14 +22,20 @@ const circleFill = computed(
 
 <template>
   <div class="result-wrapper">
-    <div class="result__text-wrapper">
-      <h2 class="result__heading">Hvad betyder din score?</h2>
-      <p class="result__text">
-        Dit fundament er lagt, men der er altid plads til optimering. Ved at
-        finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at din
-        forretning bliver fundet af de helt rigtige kunder, når de søger efter
-        dine ydelser.
-      </p>
+    <div class="result__content">
+      <div class="result__text-wrapper">
+        <h2 class="result__heading">Hvad betyder din score?</h2>
+        <p class="result__text">
+          Dit fundament er lagt, men der er altid plads til optimering. Ved at
+          finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at din
+          forretning bliver fundet af de helt rigtige kunder, når de søger efter
+          dine ydelser.
+        </p>
+      </div>
+      <div class="btn__wrapper">
+        <a class="btn__green" href="https://naemt.nu/kontakt/" target="_blank" rel="noopener">Kontakt os</a>
+        <button class="btn__white" @click="emit('goBack')">Søg igen</button>
+      </div>
     </div>
     <div class="result__circle--wrapper">
       <div class="score-circle" :style="{ background: circleFill }">
@@ -37,18 +43,7 @@ const circleFill = computed(
           {{ scorePercent }}
         </div>
       </div>
-      <p class="score-circle__label">SEO Score</p>
-      <div class="btn__wrapper">
-        <a
-          class="btn__green"
-          href="https://naemt.nu/kontakt/"
-          target="_blank"
-          rel="noopener"
-        >
-          Kontakt os
-        </a>
-        <button class="btn__white" @click="emit('goBack')">Søg igen</button>
-      </div>
+      <p class="score-label">SEO Score</p>
     </div>
   </div>
 </template>
@@ -58,12 +53,23 @@ const circleFill = computed(
 
 .result-wrapper {
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
-  align-items: center;
+}
+
+.result__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .result__heading {
   margin-bottom: 1rem;
+  color: $color-kelp-green;
+}
+
+.result__text {
+  margin-bottom: 2.5rem;
   color: $color-kelp-green;
 }
 
@@ -72,11 +78,6 @@ const circleFill = computed(
   flex-direction: column;
   align-items: center;
   width: 100%;
-}
-
-.result__text {
-  margin-bottom: 2rem;
-  color: $color-kelp-green;
 }
 
 .btn__wrapper {
@@ -95,8 +96,8 @@ const circleFill = computed(
 }
 
 .score-circle {
-  width: 10rem;
-  height: 10rem;
+  width: 15rem;
+  height: 15rem;
 
   border-radius: 50%;
 
@@ -110,8 +111,8 @@ const circleFill = computed(
 }
 
 .inner-circle {
-  width: 7.5rem;
-  height: 7.5rem;
+  width: 10rem;
+  height: 10rem;
 
   background: $color-foam-blue;
   border-radius: 50%;
@@ -119,16 +120,13 @@ const circleFill = computed(
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+
+  font-size: 3.5rem;
   font-weight: bold;
   font-family: $font-comfortaa;
   box-shadow: inset 0 0 4px rgba($color-kelp-green, 0.2);
 
   color: $color-kelp-green;
-}
-
-.score-circle__label {
-  display: none;
 }
 
 /* ─── Tablet ───────────────────────────────── */
@@ -144,56 +142,67 @@ const circleFill = computed(
 @media (min-width: 1200px) {
   .result-wrapper {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    align-items: center;
-    column-gap: 6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .result__content {
+    justify-content: flex-end;
   }
 
   .result__text-wrapper {
-    grid-column: 1;
-    grid-row: 1;
-    align-self: end;
+    width: 100%;
+  }
+
+  .result__text {
+    margin-bottom: 2rem;
+    max-width: 75%;
+  }
+
+  .btn__wrapper {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0;
+
+    .btn__green,
+    .btn__white {
+      width: auto;
+    }
   }
 
   .result__circle--wrapper {
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    margin-left: 2rem;
   }
 
   .score-circle {
-    grid-column: 2;
-    width: 15rem;
-    height: 15rem;
-    position: relative;
+    width: 17rem;
+    height: 17rem;
+    margin-bottom: 1.5rem;
   }
 
-  .score-circle__label {
+  .score-label {
     color: $color-kelp-green;
     font-family: $font-comfortaa;
     font-size: 1.75rem;
-    width: 15rem;
-    white-space: nowrap;
     text-align: center;
-    margin-top: 0;
-    display: block;
   }
 
   .inner-circle {
     width: 11.875rem;
     height: 11.875rem;
-
     font-size: 4rem;
     font-weight: 400;
   }
 
-  .btn__wrapper {
-    grid-column: 1;
-    grid-row: 2;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1.5rem;
+  .btn__green, .btn__white {
+    padding: 1.25rem 3rem;
   }
 }
 </style>

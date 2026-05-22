@@ -197,13 +197,20 @@ main {
     padding-left: 9.375rem;
     justify-content: space-between;
   }
+
   .section-wrapper,
   .section-wrapper--loader,
   .section-wrapper--result {
-    padding-top: 10rem;
-    padding-right: 2rem;
+    padding-top: 5rem;
+    padding-right: 0rem;
     padding-left: 0rem;
-    padding-bottom: 5rem;
+    width: 60%;
+    min-height: auto;
+  }
+
+  .section-wrapper {
+    justify-content: flex-start;
+    padding-bottom: 0;
   }
 
   .section-wrapper--bottom {
@@ -216,15 +223,11 @@ main {
     }
   }
 
-  .section-wrapper--loader {
-    width: 100%;
-  }
-
   .herosection__picture {
-    display: block;
-    overflow: hidden;
+    display:inline-block;
+    // overflow: hidden;
     width: auto;
-    height: 30rem;
+    height: 25rem;
     align-self: flex-end;
   }
 }
