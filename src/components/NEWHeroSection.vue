@@ -49,6 +49,7 @@ const goBack = () => {
         <p class="section-wrapper__p">Link til hjemmeside:</p>
         <div class="section-input-button__wrapper">
           <input
+            @keydown.enter="fetchPageSpeedData"
             class="section-wrapper__input"
             v-model="targetUrl"
             type="text"
@@ -216,6 +217,7 @@ main {
   }
 
   .section-wrapper--loader {
+    width: 100%;
   }
 
   .herosection__picture {
