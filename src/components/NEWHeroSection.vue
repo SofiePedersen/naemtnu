@@ -5,23 +5,19 @@ import { ref } from "vue";
 import SeoCheckerResult from "./SeoCheckerResult.vue";
 
 const apiKey = import.meta.env.VITE_API_TOKEN;
-const apiEndpoint =
-  "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
-
+const apiEndpoint ="https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
 const targetUrl = ref("");
 const result = ref(0);
 const isLoading = ref(false);
 
 const fetchPageSpeedData = async () => {
   isLoading.value = true;
-  // const requestUrl = {apiEndpoint} + "?url= " + {encodeURIComponent(targetUrl.value)} + "&key=" + {apiKey};
   const requestUrl = `${apiEndpoint}?url=${encodeURIComponent(targetUrl.value)}&key=${apiKey}`;
   console.log(requestUrl);
 
   try {
     const response = await fetch(requestUrl);
     const data = await response.json();
-
     result.value = data.lighthouseResult.categories.performance.score;
   } catch (error) {
     isLoading.value = false;
@@ -51,17 +47,8 @@ const goBack = () => {
       <div class="section-wrapper--bottom">
         <p class="section-wrapper__p">Link til hjemmeside:</p>
         <div class="section-input-button__wrapper">
-          <input
-            class="section-wrapper__input"
-            v-model="targetUrl"
-            type="text"
-            placeholder="Indsæt linket til hjemmesiden du vil teste..."
-          />
-          <button
-            class="btn__green"
-            id="submit-btn"
-            @click="fetchPageSpeedData"
-          >
+          <input class="section-wrapper__input" v-model="targetUrl" type="text" placeholder="Indsæt linket til hjemmesiden du vil teste..."/>
+          <button class="btn__green" id="submit-btn" @click="fetchPageSpeedData">
             Tjek min SEO
           </button>
         </div>
