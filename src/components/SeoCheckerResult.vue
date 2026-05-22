@@ -118,7 +118,6 @@ const circleFill = computed(
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 2.5rem;
   font-weight: bold;
   font-family: $font-comfortaa;
@@ -168,10 +167,8 @@ const circleFill = computed(
   .score-circle {
     grid-column: 2;
     grid-row: 1 / span 2;
-
-    width: 17rem;
-    height: 17rem;
-
+    width: 15rem;
+    height: 15rem;
     position: relative;
   }
 
