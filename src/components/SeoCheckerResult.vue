@@ -37,6 +37,7 @@ const circleFill = computed(
           {{ scorePercent }}
         </div>
       </div>
+      <p class="score-circle__label">SEO Score</p>
       <div class="btn__wrapper">
         <a
           class="btn__green"
@@ -126,6 +127,10 @@ const circleFill = computed(
   color: $color-kelp-green;
 }
 
+.score-circle__label {
+  display: none;
+}
+
 /* ─── Tablet ───────────────────────────────── */
 
 @media (min-width: 768px) {
@@ -163,16 +168,15 @@ const circleFill = computed(
     position: relative;
   }
 
-  .score-circle::after {
-    content: "SEO Score";
-    position: absolute;
-    left: 50%;
-    bottom: -4rem;
-    transform: translateX(-50%);
+  .score-circle__label {
     color: $color-kelp-green;
     font-family: $font-comfortaa;
     font-size: 1.75rem;
+    width: 15rem;
     white-space: nowrap;
+    text-align: center;
+    margin-top: 0;
+    display: block;
   }
 
   .inner-circle {
