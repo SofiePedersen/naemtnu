@@ -195,20 +195,20 @@ main {
   main {
     display: flex;
     padding-left: 9.375rem;
-    padding-right: 9.375rem;
+    justify-content: space-between;
   }
   .section-wrapper,
   .section-wrapper--loader,
   .section-wrapper--result {
     padding-top: 10rem;
-    padding-right: 8rem;
+    padding-right: 2rem;
     padding-left: 0rem;
     padding-bottom: 5rem;
   }
 
   .section-wrapper--bottom {
     .section-wrapper__input {
-      width: 45%;
+      width: 60%;
     }
     .btn__green {
       margin-left: 1rem;
@@ -222,10 +222,10 @@ main {
 
   .herosection__picture {
     display: block;
-    width: 30%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    overflow: hidden;
+    width: auto;
+    height: 30rem;
+    align-self: flex-end;
   }
 }
 </style>
