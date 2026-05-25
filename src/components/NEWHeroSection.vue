@@ -187,6 +187,24 @@ main {
 /* ─── Tablet ───────────────────────────────── */
 
 @media (min-width: 768px) {
+  .section-wrapper {
+    min-height: 24rem;
+  }
+
+  .section-wrapper--bottom {
+    .section-wrapper__input {
+      width: 60%;
+    }
+  }
+  .section-wrapper--bottom {
+    .section-wrapper__input {
+      width: 55%;
+    }
+    .btn__green {
+      margin-left: 1rem;
+      white-space: nowrap;
+    }
+  }
 }
 
 /* ─── Desktop ───────────────────────────────── */
@@ -224,7 +242,7 @@ main {
   }
 
   .herosection__picture {
-    display:inline-block;
+    display: inline-block;
     // overflow: hidden;
     width: auto;
     height: 25rem;

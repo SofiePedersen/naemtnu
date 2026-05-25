@@ -27,13 +27,19 @@ const circleFill = computed(
         <h2 class="result__heading">Hvad betyder din score?</h2>
         <p class="result__text">
           Dit fundament er lagt, men der er altid plads til optimering. Ved at
-          finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at din
-          forretning bliver fundet af de helt rigtige kunder, når de søger efter
-          dine ydelser.
+          finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at
+          din forretning bliver fundet af de helt rigtige kunder, når de søger
+          efter dine ydelser.
         </p>
       </div>
       <div class="btn__wrapper">
-        <a class="btn__green" href="https://naemt.nu/kontakt/" target="_blank" rel="noopener">Kontakt os</a>
+        <a
+          class="btn__green"
+          href="https://naemt.nu/kontakt/"
+          target="_blank"
+          rel="noopener"
+          >Kontakt os</a
+        >
         <button class="btn__white" @click="emit('goBack')">Søg igen</button>
       </div>
     </div>
@@ -201,7 +207,8 @@ const circleFill = computed(
     font-weight: 400;
   }
 
-  .btn__green, .btn__white {
+  .btn__green,
+  .btn__white {
     padding: 1.25rem 3rem;
   }
 }
