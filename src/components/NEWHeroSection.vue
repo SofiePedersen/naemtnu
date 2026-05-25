@@ -10,8 +10,10 @@ const apiEndpoint =
 const targetUrl = ref("");
 const result = ref(0);
 const isLoading = ref(false);
+const errorMessage = ref('')
 
 const fetchPageSpeedData = async () => {
+  if (!validateUrl()) return
   isLoading.value = true;
   const requestUrl = `${apiEndpoint}?url=${encodeURIComponent(targetUrl.value)}&key=${apiKey}`;
   console.log(requestUrl);
@@ -28,6 +30,27 @@ const fetchPageSpeedData = async () => {
   }
 };
 
+function validateUrl() {
+  if (!targetUrl.value) {
+    errorMessage.value = 'Indtast venligst en URL.'
+    return false
+  }
+  if (!targetUrl.value.startsWith('https://')) {
+    if (targetUrl.value.startsWith('http://')) {
+      errorMessage.value = 'Brug venligst https:// i stedet for http://'
+    } else {
+      errorMessage.value = 'URL skal starte med https:// (f.eks. https://example.com)'
+    }
+    return false
+  }
+  errorMessage.value = ''
+  return true
+}
+
+function clearError() {
+  if (errorMessage.value) errorMessage.value = ''
+}
+
 const goBack = () => {
   result.value = 0;
   targetUrl.value = "";
@@ -36,36 +59,38 @@ const goBack = () => {
 
 <template>
   <main>
-    <div v-show="result == 0 && !isLoading" class="section-wrapper">
-      <div>
-        <h1 class="section-wrapper__heading">Tjek din hjemmesides SEO</h1>
-        <h2 class="section-wrapper__sub-heading">
-          Tjek om din hjemmeside har grundlæggende SEO i orden. Det giver dig en
-          hurtig fornemmelse af, hvor din hjemmeside står nu.
-        </h2>
-      </div>
+      <div v-show="result == 0 && !isLoading" class="section-wrapper">
+        <div>
+          <h1 class="section-wrapper__heading">Tjek din hjemmesides SEO</h1>
+          <h2 class="section-wrapper__sub-heading">Tjek om din hjemmeside har grundlæggende SEO i orden. Det giver dig en hurtig fornemmelse af, hvor din hjemmeside står nu.</h2>
+        </div>
 
       <div class="section-wrapper--bottom">
         <p class="section-wrapper__p">Link til hjemmeside:</p>
-        <div class="section-input-button__wrapper">
-          <input
-            @keydown.enter="fetchPageSpeedData"
-            class="section-wrapper__input"
-            v-model="targetUrl"
-            type="text"
-            placeholder="Indsæt linket til hjemmesiden du vil teste..."
-          />
-          <button
-            class="btn__green"
-            id="submit-btn"
-            @click="fetchPageSpeedData"
-          >
-            Tjek min SEO
-          </button>
-        </div>
-      </div>
-      <!-- #2 - loading fallback -->
+      <div class="section-input-button__wrapper">
+        <p v-if="errorMessage" class="error-text">{{ errorMessage }}</p>
+      <input
+        v-model="targetUrl"
+        type="text"
+        class="section-wrapper__input"
+        :class="{ 'input-error': errorMessage }"
+        placeholder="Indsæt linket til hjemmesiden du vil teste..."
+        @blur="validateUrl"
+        @input="clearError"
+        @keydown.enter="fetchPageSpeedData"
+      />
+      <button
+        class="btn__green"
+        id="submit-btn"
+        :disabled="!!errorMessage || !targetUrl"
+        @click="fetchPageSpeedData"
+      >
+        Tjek min SEO
+      </button>
     </div>
+  </div>
+</div>
+      <!-- #2 - loading fallback -->
 
     <div v-show="isLoading" class="section-wrapper--loader">
       <div class="loader"></div>
