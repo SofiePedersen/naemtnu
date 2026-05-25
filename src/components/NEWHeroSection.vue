@@ -68,7 +68,7 @@ const goBack = () => {
       <div class="section-wrapper--bottom">
         <p class="section-wrapper__p">Link til hjemmeside:</p>
       <div class="section-input-button__wrapper">
-        <p v-if="errorMessage" class="error-text">{{ errorMessage }}</p>
+        <p v-if="errorMessage" class="Herosection__errorcode">{{ errorMessage }}</p>
       <input
         v-model="targetUrl"
         type="text"
@@ -179,6 +179,10 @@ main {
   color: $color-kelp-green;
   font-size: 1.125rem;
   text-align: center;
+}
+
+.Herosection__errorcode {
+  color: red;
 }
 
 .loader {
