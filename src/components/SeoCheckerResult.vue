@@ -74,6 +74,11 @@ const circleFill = computed(
   color: $color-kelp-green;
 }
 
+.result__text-wrapper {
+  align-self: center;
+  width: 70%;
+}
+
 .result__text {
   margin-bottom: 2.5rem;
   color: $color-kelp-green;
