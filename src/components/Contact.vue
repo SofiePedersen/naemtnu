@@ -75,6 +75,12 @@ import Sebastian from "@/assets/images/sebastian.webp";
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+  .btn__green {
+    padding: 1.25rem 25%;
+  }
+  .btn__white {
+    padding: 1.25rem 25%;
+  }
 }
 
 .contact__wrapper--sebastian {
@@ -106,10 +112,12 @@ h4 {
 
   .contact__content {
     width: 65%;
+    padding-bottom: 2rem;
   }
 
   .contact__wrapper--sebastian {
     width: 30%;
+    margin-top: auto;
 
     img {
       width: 100%;
@@ -118,6 +126,12 @@ h4 {
 
   .contact__wrapper--buttons {
     flex-direction: row;
+    .btn__green {
+      padding: 1.25rem 3rem;
+    }
+    .btn__white {
+      padding: 1.25rem 3rem;
+    }
   }
 }
 
