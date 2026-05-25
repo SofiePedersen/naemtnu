@@ -60,7 +60,7 @@ const circleFill = computed(
 .result-wrapper {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 .result__content {
@@ -84,6 +84,7 @@ const circleFill = computed(
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-bottom: 2rem;
 }
 
 .btn__wrapper {
@@ -135,11 +136,19 @@ const circleFill = computed(
   color: $color-kelp-green;
 }
 
+.score-label {
+  color: $color-kelp-green;
+  font-family: $font-comfortaa;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 /* ─── Tablet ───────────────────────────────── */
 
 @media (min-width: 768px) {
   .result__circle--wrapper {
     width: 60%;
+    align-self: center;
   }
 }
 
@@ -194,10 +203,7 @@ const circleFill = computed(
   }
 
   .score-label {
-    color: $color-kelp-green;
-    font-family: $font-comfortaa;
     font-size: 1.75rem;
-    text-align: center;
   }
 
   .inner-circle {
