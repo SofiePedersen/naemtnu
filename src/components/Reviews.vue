@@ -123,7 +123,8 @@ function prevReview() {
                 v-for="n in review.rating"
                 :key="n"
                 :src="Star"
-                alt="Stjerne"
+                alt=""
+                aria-hidden="true"
               />
               <p>{{ review.timeAgo }}</p>
             </div>
