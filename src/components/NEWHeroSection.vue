@@ -110,7 +110,7 @@ const goBack = () => {
     </div>
     <img
       :src="Bubbles"
-      alt="Billede med de 3 gutter fra næmt"
+      alt=""
       class="herosection__picture"
     />
   </main>
