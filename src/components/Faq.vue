@@ -78,6 +78,9 @@ const infoTabs = [
             class="accordion-item__header"
             :class="{ 'is-open': activeId === tab.id }"
             @click="toggle(tab.id)"
+            :aria-expanded="activeId === tab.id"
+            :aria-controls="`accordion-body-${tab.id}`"
+            :id="`accordion-header-${tab.id}`"
           >
             <span>{{ tab.question }}</span>
 
@@ -90,6 +93,8 @@ const infoTabs = [
           <div
             class="accordion-item__body"
             :class="{ 'is-open': activeId === tab.id }"
+            :id="`accordion-body-${tab.id}`"
+            :aria-labelledby="`accordion-header-${tab.id}`"
           >
             <p>{{ tab.answer }}</p>
           </div>
