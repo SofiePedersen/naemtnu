@@ -67,13 +67,13 @@ const goBack = () => {
           <h1 class="section-wrapper__heading">Tjek din hjemmesides SEO</h1>
           <h2 class="section-wrapper__sub-heading">Tjek om din hjemmeside har grundlæggende SEO i orden. Det giver dig en hurtig fornemmelse af, hvor din hjemmeside står nu.</h2>
         </div>
-
       <div class="section-wrapper--bottom">
         <p class="section-wrapper__p">Link til hjemmeside:</p>
       <div class="section-input-button__wrapper">
         <p v-if="errorMessage" class="Herosection__errorcode">{{ errorMessage }}</p>
       <input
         v-model="targetUrl"
+        aria-label="find din seo score"
         type="text"
         class="section-wrapper__input"
         :class="{ 'input-error': errorMessage, hasError }"
@@ -85,6 +85,7 @@ const goBack = () => {
       <button
         class="btn__green"
         id="submit-btn"
+        :aria-disabled="!!errorMessage || !targetUrl"
         :disabled="!!errorMessage || !targetUrl"
         @click="fetchPageSpeedData"
       >
