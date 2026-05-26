@@ -11,6 +11,7 @@ const targetUrl = ref("");
 const result = ref(0);
 const isLoading = ref(false);
 const errorMessage = ref('')
+const hasError = ref(false)
 
 const fetchPageSpeedData = async () => {
   if (!validateUrl()) return
@@ -41,9 +42,11 @@ function validateUrl() {
     } else {
       errorMessage.value = 'URL skal starte med https:// (f.eks. https://example.com)'
     }
+    hasError.value = true
     return false
   }
   errorMessage.value = ''
+  hasError.value = false
   return true
 }
 
@@ -73,7 +76,7 @@ const goBack = () => {
         v-model="targetUrl"
         type="text"
         class="section-wrapper__input"
-        :class="{ 'input-error': errorMessage }"
+        :class="{ 'input-error': errorMessage, hasError }"
         placeholder="Indsæt linket til hjemmesiden du vil teste..."
         @blur="validateUrl"
         @input="clearError"
@@ -147,6 +150,11 @@ main {
   font-family: $font-montserrat;
   font-weight: normal;
   color: $color-kelp-green;
+}
+
+.input-error {
+  border-color: #ef4444;
+  outline-color: #ef4444;
 }
 
 .section-wrapper__p {
