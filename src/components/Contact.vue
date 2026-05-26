@@ -39,7 +39,7 @@ import Sebastian from "@/assets/images/sebastian.webp";
       </div>
 
       <div class="contact__wrapper--sebastian">
-        <img :src="Sebastian" alt="Sebastian" />
+        <img :src="Sebastian" alt="Sebastian fra næmt" />
       </div>
     </div>
   </main>
