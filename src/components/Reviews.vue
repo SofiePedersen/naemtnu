@@ -97,8 +97,8 @@ function prevReview() {
       <div class="review--logo"><img :src="Logo" alt="næmt.nu logo" /></div>
 
       <div class="reviewslider">
-        <button @click="prevReview">
-          <img :src="Arrow" alt="Forrige" />
+        <button @click="prevReview" aria-label="Forrige anmeldelser">
+          <img :src="Arrow" alt="" aria-hidden="true" />
         </button>
 
         <div class="review__cards--wrapper">
@@ -132,8 +132,8 @@ function prevReview() {
           </div>
         </div>
 
-        <button @click="nextReview">
-          <img :src="Arrow" alt="Næste" />
+        <button @click="nextReview" aria-label="Næste anmeldelser">
+          <img :src="Arrow" alt="" aria-hidden="true" />
         </button>
       </div>
     </div>
