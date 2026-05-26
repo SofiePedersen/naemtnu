@@ -1,449 +1,290 @@
 <script setup>
+import Bubbles from "@/assets/images/hero-section-bubbles.webp";
 import { ref } from "vue";
-import { computed } from "vue";
+
+import SeoCheckerResult from "./SeoCheckerResult.vue";
 
 const apiKey = import.meta.env.VITE_API_TOKEN;
-const apiEndpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://web.dev/&key=${apiKey}`;
+const apiEndpoint =
+  "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
 const targetUrl = ref("");
-const resultData = ref(null);
+const result = ref(0);
 const isLoading = ref(false);
-const number = ref(0);
-const CIRCUMFERENCE = 911;
-let intervalId = null;
-
-const reloadPage = () => {
-  window.location.reload();
-};
-
-intervalId = setInterval(() => {
-  if (resultData.value) {
-    const score = Math.round(
-      resultData.value.lighthouseResult.categories.performance.score * 100,
-    );
-    if (number.value < score) {
-      number.value += 1;
-    }
-  }
-}, 20);
-
-const currentOffset = computed(() => {
-  return CIRCUMFERENCE - (number.value / 100) * CIRCUMFERENCE;
-});
+const errorMessage = ref('')
+const hasError = ref(false)
 
 const fetchPageSpeedData = async () => {
-  const url = new URL(apiEndpoint);
-  url.searchParams.set("url", targetUrl.value);
-  url.searchParams.set("key", apiKey);
-
+  if (!validateUrl()) return
   isLoading.value = true;
+  const requestUrl = `${apiEndpoint}?url=${encodeURIComponent(targetUrl.value)}&key=${apiKey}`;
+  console.log(requestUrl);
 
   try {
-    const response = await fetch(url);
-    resultData.value = await response.json();
-    console.log(resultData.value);
+    const response = await fetch(requestUrl);
+    const data = await response.json();
+    result.value = data.lighthouseResult.categories.performance.score;
   } catch (error) {
+    isLoading.value = false;
     console.error("Error fetching PageSpeed data:", error);
   } finally {
     isLoading.value = false;
   }
 };
+
+function validateUrl() {
+  if (!targetUrl.value) {
+    errorMessage.value = 'Indtast venligst en URL.'
+    return false
+  }
+  if (!targetUrl.value.startsWith('https://')) {
+    if (targetUrl.value.startsWith('http://')) {
+      errorMessage.value = 'Brug venligst https:// i stedet for http://'
+    } else {
+      errorMessage.value = 'URL skal starte med https:// (f.eks. https://example.com)'
+    }
+    hasError.value = true
+    return false
+  }
+  errorMessage.value = ''
+  hasError.value = false
+  return true
+}
+
+function clearError() {
+  if (errorMessage.value) errorMessage.value = ''
+}
+
+const goBack = () => {
+  result.value = 0;
+  targetUrl.value = "";
+};
 </script>
 
 <template>
   <main>
-    <div class="HeroSection__wrapper">
-      <div class="HeroSection" v-if="!resultData && !isLoading">
-        <h1 class="HeroSection__text__h1">Tjek Din Hjemmesides SEO</h1>
-        <p class="HeroSection__text__p">
-          Tjek om din hjemmeside har grundlæggende SEO i orden. Det giver dig en
-          hurtig fornemmelse af, hvor din hjemmeside står lige nu.
-        </p>
-      </div>
-      <div class="HeroSection" v-if="resultData">
-        <h2 class="HeroSection__text__h1">Hvad betyder din score?</h2>
-        <p class="HeroSection__text__p">
-          Dit fundament er lagt, men der er altid plads til optimering. Ved at
-          finjustere dit indhold og styrke din tekniske SEO, kan vi sikre, at
-          din forretning bliver fundet af de helt rigtige kunder, når de søger
-          efter dine ydelser.
-        </p>
-        <div class="wrapper">
-          <div class="outer">
-            <div class="inner">
-              <div id="number">{{ number }}</div>
-            </div>
-          </div>
-          <svg width="20rem" height="20rem" viewBox="0 0 320 320">
-            <circle
-              cx="160"
-              cy="160"
-              r="145"
-              :style="{ strokeDashoffset: currentOffset }"
-            />
-          </svg>
+      <div v-show="result == 0 && !isLoading" class="section-wrapper">
+        <div>
+          <h1 class="section-wrapper__heading">Tjek din hjemmesides SEO</h1>
+          <h2 class="section-wrapper__sub-heading">Tjek om din hjemmeside har grundlæggende SEO i orden. Det giver dig en hurtig fornemmelse af, hvor din hjemmeside står nu.</h2>
         </div>
-        <h2 class="HeroSection__text__h2">SEO Score</h2>
-      </div>
-      <div v-if="isLoading" class="HeroSection">
-        <span class="loader"></span>
-      </div>
-      <div class="HeroSection__button--SEO HeroSection__button--SEOpreloaded">
-        <p v-if="!resultData && !isLoading" class="HeroSection__text__pbold">
-          Link til hjemmeside:
-        </p>
-        <input
-          v-if="!resultData && !isLoading"
-          type="text"
-          v-model="targetUrl"
-          @keydown.enter="fetchPageSpeedData"
-          placeholder="Indsæt dit fulde link her..."
-        />
-        <button
-          v-if="!resultData"
-          class="btn__green btn__SEO"
-          type="submit"
-          :disabled="isLoading"
-          id="submit-btn"
-          @click="fetchPageSpeedData"
-        >
-          {{ isLoading ? "Indlæser..." : "Tjek min SEO" }}
-        </button>
-        <div class="result-btns-data">
-          <a
-            class="btn__green"
-            v-if="resultData"
-            type="submit"
-            :disabled="isLoading"
-            id="submit-btn"
-            href="https://www.linkedin.com/company/naemt-nu/posts/?feedView=all"
-            >Kontakt os</a
-          >
-          <button
-            v-if="resultData"
-            class="btn__white"
-            type="submit"
-            id="submit-btn"
-            @click="reloadPage"
-          >
-            Søg igen
-          </button>
-        </div>
-      </div>
+      <div class="section-wrapper--bottom">
+        <p class="section-wrapper__p">Link til hjemmeside:</p>
+      <div class="section-input-button__wrapper">
+        <p v-if="errorMessage" class="Herosection__errorcode">{{ errorMessage }}</p>
+      <input
+        v-model="targetUrl"
+        aria-label="find din seo score"
+        type="text"
+        class="section-wrapper__input"
+        :class="{ 'input-error': errorMessage, hasError }"
+        placeholder="Indsæt linket til hjemmesiden du vil teste..."
+        @blur="validateUrl"
+        @input="clearError"
+        @keydown.enter="fetchPageSpeedData"
+      />
+      <button
+        class="btn__green"
+        id="submit-btn"
+        :aria-disabled="!!errorMessage || !targetUrl"
+        :disabled="!!errorMessage || !targetUrl"
+        @click="fetchPageSpeedData"
+      >
+        Tjek min SEO
+      </button>
     </div>
+  </div>
+</div>
+      <!-- #2 - loading fallback -->
+
+    <div v-show="isLoading" class="section-wrapper--loader">
+      <div class="loader"></div>
+      <p>
+        Vi undersøger lige siden! <br />
+        Dette kan tage nogle sekunder...
+      </p>
+    </div>
+
+    <!-- #3 - resulstat komponent -->
+    <div class="section-wrapper--result" v-show="result !== 0">
+      <SeoCheckerResult :seoScore="result" @goBack="goBack" />
+    </div>
+    <img
+      :src="Bubbles"
+      alt=""
+      class="herosection__picture"
+    />
   </main>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @import "../assets/main.scss";
 
-*{
-  border: 1px solid black;
-}
+/* ─── Wrapper ─────────────────────────────── */
 
-.HeroSection__wrapper {
+main {
   background-color: $color-foam-blue;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.HeroSection {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
-  background-color: $color-foam-blue;
-}
-
-.HeroSection__image {
-  display: none;
   position: relative;
-  transform: rotateY(180deg);
 }
 
-.HeroSection__text__h1 {
-  align-self: flex-start;
-  text-align: left;
-  color: $color-kelp-green;
-  margin-bottom: 1rem;
-  padding-top: 2rem;
+.section-wrapper,
+.section-wrapper--loader,
+.section-wrapper--result {
+  min-height: 30rem;
+  padding: 3rem 1rem;
 }
 
-.HeroSection__text__h2 {
-  color: $color-kelp-green;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.HeroSection__text__p {
-  color: $color-kelp-green;
-}
-
-.HeroSection__text__link {
-  background-color: $color-foam-blue;
-}
-
-.HeroSection__button--SEO {
-  padding-bottom: 3rem;
-  width: 100%;
+.section-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  background-color: $color-foam-blue;
+  justify-content: space-between;
 }
 
-.HeroSection__text__pbold {
+.section-wrapper__heading {
+  margin-bottom: 2rem;
+  font-size: 2rem;
   color: $color-kelp-green;
-  justify-content: start;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
-  font-weight: 450;
 }
 
-input {
-  font-family: "Montserrat";
-  font-style: italic;
-  padding: 1.5rem;
+.section-wrapper__sub-heading {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  font-family: $font-montserrat;
+  font-weight: normal;
+  color: $color-kelp-green;
+}
+
+.input-error {
+  border-color: #ef4444;
+  outline-color: #ef4444;
+}
+
+.section-wrapper__p {
+  color: $color-kelp-green;
+}
+
+.section-wrapper__input {
+  padding: 1.25rem;
+  width: 100%;
+  margin: 1rem 0rem;
+  border-radius: 300rem;
   border: 1px solid $color-kelp-green;
-  border-radius: 50px;
-  width: 100%;
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-  box-shadow: 4px 4px 4px rgba($color-kelp-green, 0.15);
 }
 
-.btn__green--inner {
-  border: none;
-  background-color: none;
+.section-wrapper__input::placeholder {
+  font-style: italic;
+  color: $color-charcoal-black;
+  opacity: 0.5;
 }
 
-.result-btns-data {
+/* ─── Loader ─────────────────────────────── */
+
+.section-wrapper--loader {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1rem;
+  flex-direction: column;
+  padding-top: 0rem;
 }
 
-.wrapper {
-  width: 100%;
-  height: 20rem;
-  margin-top: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.outer {
-  box-sizing: border-box;
-  width: 20rem;
-  height: 20rem;
-  box-shadow:
-    -1px -1px 5px 0px rgba($color-kelp-green, 0.15),
-    3px 3px 5px rgba($color-kelp-green, 0.15);
-  border-radius: 50%;
-  padding: 1.875rem;
-}
-
-.inner {
-  width: 16.25rem;
-  height: 16.25rem;
-  box-shadow:
-    inset -1px -1px 5px 0px rgba($color-kelp-green, 0.15),
-    inset 3px 3px 5px rgba($color-kelp-green, 0.15);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#number {
-  font-size: 5rem;
-  font-family: "montserrat", sans-serif;
-  font-weight: 400;
+.section-wrapper--loader p {
   color: $color-kelp-green;
+  font-size: 1.125rem;
+  text-align: center;
 }
 
-svg {
-  position: absolute;
-}
-
-circle {
-  fill: none;
-  stroke: $color-kelp-green;
-  stroke-width: 30;
-  stroke-dasharray: 911;
-  stroke-linecap: round;
-  transform: rotate(-90deg);
-  transform-origin: center;
-  animation: anim 1s ease forwards;
+.Herosection__errorcode {
+  color: red;
 }
 
 .loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 15rem;
-  height: 15rem;
+  margin: auto;
+  --d: 33px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  position: relative;
-  animation: rotate 1s linear infinite;
-}
-.loader::before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  inset: 0px;
-  border-radius: 50%;
-  border: 5px solid $color-kelp-green;
-  animation: prixClipFix 2s linear infinite;
+  color: $color-kelp-green;
+  box-shadow:
+    calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
+    calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
+    calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,
+    calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px,
+    calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px,
+    calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px,
+    calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
+  animation: l27 1s infinite steps(8);
 }
 
-@keyframes rotate {
+.herosection__picture {
+  display: none;
+}
+
+@keyframes l27 {
   100% {
-    transform: rotate(360deg);
+    transform: rotate(1turn);
   }
 }
 
-@keyframes prixClipFix {
-  0% {
-    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
-  }
-  25% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
-  }
-  50% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
-  }
-  75% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
-  }
-  100% {
-    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
-  }
-}
-
-@media (max-width: 360px) {
-  .HeroSection {
-    padding: 0rem 1rem;
-  }
-
-  .HeroSection__button--SEOpreloaded {
-    padding: 0rem 1rem;
-    gap: 0rem;
-  }
-
-  .result-btns-data {
-    gap: 0.5rem;
-    margin-bottom: 3rem;
-
-    .btn__green,
-    .btn__white {
-      padding: 1rem 1.5rem;
-      width: 50%;
-      text-align: center;
-    }
-  }
-}
-
-@media (max-width: 420px) {
-  .HeroSection {
-    padding: 0rem 1rem;
-  }
-
-  .HeroSection__button--SEOpreloaded {
-    padding: 0rem 1rem;
-    gap: 0rem;
-  }
-
-  .result-btns-data {
-    gap: 0.5rem;
-    margin-bottom: 3rem;
-
-    .btn__green,
-    .btn__white {
-      padding: 1rem 1.5rem;
-      width: 50%;
-      font-size: 0.875rem;
-      text-align: center;
-    }
-  }
-}
+/* ─── Tablet ───────────────────────────────── */
 
 @media (min-width: 768px) {
-  .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .section-wrapper {
+    min-height: 24rem;
   }
 
-  .HeroSection__button--SEO {
-    flex-direction: row;
-    justify-content: center;
+  .section-wrapper--bottom {
+    .section-wrapper__input {
+      width: 60%;
+    }
   }
-
-  .HeroSection__button--SEOpreloaded {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  input {
-    width: 80%;
-  }
-
-  .HeroSection__text__pbold {
-    align-items: start;
-  }
-
-  .btn__green {
-    align-items: center;
-    justify-content: center;
-  }
-
-  .btn__SEO {
-    width: 50%;
-  }
-
-  .btn__white {
-    align-items: center;
-    justify-content: center;
+  .section-wrapper--bottom {
+    .section-wrapper__input {
+      width: 55%;
+    }
+    .btn__green {
+      margin-left: 1rem;
+      white-space: nowrap;
+    }
   }
 }
 
+/* ─── Desktop ───────────────────────────────── */
+
 @media (min-width: 1200px) {
-  .HeroSection__wrapper {
+  main {
+    display: flex;
     padding-left: 9.375rem;
-    padding-right: 9.375rem;
-    padding-top: 10rem;
-  }
-
-  .HeroSection {
-    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding-bottom: 1rem;
   }
 
-  .HeroSection__button--SEO {
-    flex-direction: column;
-    align-items: flex-start;
+  .section-wrapper,
+  .section-wrapper--loader,
+  .section-wrapper--result {
+    padding-top: 5rem;
+    padding-right: 0rem;
+    padding-left: 0rem;
+    width: 60%;
+    min-height: auto;
   }
 
-  .wrapper {
-    flex-shrink: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .result-btns-data {
+  .section-wrapper {
     justify-content: flex-start;
+    padding-bottom: 0;
   }
 
-  .loader {
-    margin: 2rem;
-    align-self: center;
+  .section-wrapper--bottom {
+    .section-wrapper__input {
+      width: 60%;
+    }
+    .btn__green {
+      margin-left: 1rem;
+      white-space: nowrap;
+    }
+  }
+
+  .herosection__picture {
+    display: inline-block;
+    // overflow: hidden;
+    width: auto;
+    height: 25rem;
+    align-self: flex-end;
   }
 }
 </style>
