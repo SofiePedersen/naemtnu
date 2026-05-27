@@ -69,6 +69,12 @@ import Sebastian from "@/assets/images/sebastian.webp";
   gap: 1.5rem;
 }
 
+.contact__text--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .contact__wrapper--buttons {
   width: 100%;
   display: flex;
@@ -113,6 +119,10 @@ h4 {
   .contact__content {
     width: 65%;
     padding-bottom: 2rem;
+  }
+
+  .contact__text--wrapper {
+    gap: 0rem;
   }
 
   .contact__wrapper--sebastian {

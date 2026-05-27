@@ -174,7 +174,7 @@ function prevReview() {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .reviewslider button {
@@ -250,6 +250,9 @@ function prevReview() {
 /* ─── Tablet ───────────────────────────────── */
 
 @media (min-width: 768px) {
+  .reviewslider {
+    gap: 1rem;
+  }
 }
 
 /* ─── Desktop ─────────────────────────────── */
