@@ -79,7 +79,7 @@ const goBack = () => {
         :class="{ 'input-error': errorMessage, hasError }"
         placeholder="Indsæt linket til hjemmesiden du vil teste..."
         @blur="validateUrl"
-        @input="clearError"
+        @focus="clearError"
         @keydown.enter="fetchPageSpeedData"
       />
       <button
@@ -120,7 +120,6 @@ const goBack = () => {
 @import "../assets/main.scss";
 
 /* ─── Wrapper ─────────────────────────────── */
-
 main {
   background-color: $color-foam-blue;
   position: relative;
@@ -153,10 +152,6 @@ main {
   color: $color-kelp-green;
 }
 
-.input-error {
-  background-color: #ff4848;
-  color: white;
-}
 
 .section-wrapper__p {
   color: $color-kelp-green;
@@ -188,10 +183,6 @@ main {
   color: $color-kelp-green;
   font-size: 1.125rem;
   text-align: center;
-}
-
-.Herosection__errorcode {
-  color: red;
 }
 
 .loader {
@@ -286,5 +277,15 @@ main {
     height: 25rem;
     align-self: flex-end;
   }
+}
+
+/* ─── Error ─────────────────────────────── */
+.Herosection__errorcode {
+  color: rgb(218, 25, 25);
+}
+
+.input-error {
+  background-color: rgb(255, 229, 229);
+  border-color: rgb(218, 25, 25);
 }
 </style>
