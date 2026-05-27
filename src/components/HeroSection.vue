@@ -22,7 +22,7 @@ const fetchPageSpeedData = async () => {
   try {
     const response = await fetch(requestUrl);
     const data = await response.json();
-    result.value = data.lighthouseResult.categories.performance.score;
+    result.value = data.lighthouseResult.categories.seo.score;
   } catch (error) {
     isLoading.value = false;
     console.error("Error fetching PageSpeed data:", error);
