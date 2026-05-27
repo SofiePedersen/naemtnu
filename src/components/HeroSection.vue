@@ -154,8 +154,8 @@ main {
 }
 
 .input-error {
-  border-color: #ef4444;
-  outline-color: #ef4444;
+  background-color: #ff4848;
+  color: white;
 }
 
 .section-wrapper__p {
