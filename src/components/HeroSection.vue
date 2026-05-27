@@ -16,7 +16,7 @@ const hasError = ref(false)
 const fetchPageSpeedData = async () => {
   if (!validateUrl()) return
   isLoading.value = true;
-  const requestUrl = `${apiEndpoint}?url=${encodeURIComponent(targetUrl.value)}&key=${apiKey}`;
+  const requestUrl = `${apiEndpoint}?url=${encodeURIComponent(targetUrl.value)}&key=${apiKey}&category=seo`;
   console.log(requestUrl);
 
   try {
