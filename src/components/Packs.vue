@@ -236,6 +236,7 @@
 
     .pricing {
         padding: 4rem 9.375rem;
+        padding-top: 0rem;
         background-color: $color-cloudy-white;
         overflow: hidden;
     }
@@ -258,6 +259,10 @@
 
     .pricing__pack {
         border: none;
+        min-height: 43rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .pricing__image-wrapper {
