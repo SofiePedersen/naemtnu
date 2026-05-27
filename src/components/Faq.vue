@@ -209,7 +209,7 @@ const infoTabs = [
 }
 
 .accordion-item__body.is-open {
-  max-height: 3rem;
+  max-height: 5rem;
   transition: max-height 0.25s ease-out;
 }
 
