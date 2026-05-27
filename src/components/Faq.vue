@@ -1,22 +1,13 @@
 <script setup>
-// Vi importerer `ref` fra Vue, så vi kan oprette reaktive variabler.
-// Reaktiv betyder at Vue automatisk opdaterer siden, når værdien ændrer sig.
+
 import { ref } from "vue";
 
-// Her opretter jeg en const som skal være mit reference punkt for om nogen spørgsmål er åbne.
-// Jeg starter med at vælge null for at sige ingen af dem skal være åbne.
 const activeId = ref(null);
 
-// Her spørger jeg: matcher det klikkede spørgsmål det der allerede er åbent?
-// Hvis ja (?) sæt activeId til null og luk spørgsmålet.
-// Hvis nej (:) skift activeId til det nye id og åbn spørgsmålet.
-//
-// Dette kaldes et ternary udtryk. (forkort if/else statement)
 function toggle(id) {
   activeId.value = activeId.value === id ? null : id;
 }
 
-// Her opretter jeg et array som indeholder informationen i vores accordion component.
 const infoTabs = [
   {
     id: 1,
@@ -71,9 +62,7 @@ const infoTabs = [
       <div class="faq-wrapper__accordion">
         <h2 class="faq-accordion__title">De spørgsmål vi oftest får:</h2>
 
-        <!-- Loop over infoTabs arrayet. Hvert item har et id, question og answer -->
         <div v-for="tab in infoTabs" :key="tab.id" class="accordion-item">
-          <!-- Kalder toggle() når man klikker. Klassen `is-open` tilføjes når dette item er det aktive. -->
           <button
             class="accordion-item__header"
             :class="{ 'is-open': activeId === tab.id }"
@@ -87,9 +76,6 @@ const infoTabs = [
             <div class="accordion-item__icon"></div>
           </button>
 
-          <!-- v-show tjekker om dette spørgsmåls id matcher det aktive id. 
-          Hvis det matcher, viser den svaret.
-          Hvis nej skjuler den svaret ved at bruge (display: none). -->
           <div
             class="accordion-item__body"
             :class="{ 'is-open': activeId === tab.id }"
@@ -112,7 +98,6 @@ const infoTabs = [
 }
 
 /* ─── Billede ────────────────────────────────────────────── */
-
 .faq-wrapper__image-wrapper {
   display: none;
 }
@@ -126,7 +111,6 @@ const infoTabs = [
 }
 
 /* ─── Accordion ──────────────────────────────────────────── */
-
 .faq-wrapper__accordion {
   width: 100%;
 }
@@ -159,7 +143,6 @@ const infoTabs = [
 }
 
 /*──────── Accordion-ikonet ────────────────────────*/
-
 .accordion-item__icon {
   width: 1.75rem;
   height: 1.75rem;
@@ -169,7 +152,6 @@ const infoTabs = [
   position: relative;
 }
 
-/* Oprettelse af pseudo element */
 .accordion-item__icon::before,
 .accordion-item__icon::after {
   content: "";
@@ -180,28 +162,24 @@ const infoTabs = [
   transition: transform 0.15s ease;
 }
 
-/* Vandret streg */
 .accordion-item__icon::before {
   width: 12px;
   height: 2px;
   transform: translate(-50%, -50%);
 }
 
-/* Lodret streg */
 .accordion-item__icon::after {
   width: 2px;
   height: 12px;
   transform: translate(-50%, -50%);
 }
 
-/* Når åben: begge streger roterer 45° → danner et X */
 .accordion-item__header.is-open .accordion-item__icon::before,
 .accordion-item__header.is-open .accordion-item__icon::after {
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
 /*──────── Accordion indhold ────────────────────────*/
-
 .accordion-item__body {
   max-height: 0rem;
   overflow: hidden;
@@ -219,7 +197,6 @@ const infoTabs = [
 }
 
 /*──────── Tablet ────────────────────────*/
-
 @media (min-width: 768px) {
   .faq-wrapper__image-wrapper {
     display: block;
