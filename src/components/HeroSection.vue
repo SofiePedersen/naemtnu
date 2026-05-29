@@ -65,7 +65,9 @@ const goBack = () => {
   <main>
     <div v-show="result == 0 && !isLoading" class="section-wrapper">
       <div>
-        <h1 class="section-wrapper__heading">Tjek din hjemmesides SEO</h1>
+        <h1 class="section-wrapper__heading">
+          Gratis SEO-tjek af din hjemmeside
+        </h1>
         <h2 class="section-wrapper__sub-heading">
           Tjek om din hjemmeside har grundlæggende SEO i orden. Det giver dig en
           hurtig fornemmelse af, hvor din hjemmeside står nu.
