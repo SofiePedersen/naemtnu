@@ -1,33 +1,53 @@
 <script setup>
+
 import { ref } from "vue";
 
+
+// Liste over de websites (entry points) brugeren kan vælge mellem.
+// ref() gør arrayet reaktivt.
 const entryPoints = ref([
-  { id: "spa", label: "SEO Checker - Funnel page" },
-  { id: "campaign", label: "næmt.nu - Main page" },
+  {
+    id: "spa",
+    label: "SEO Checker - Funnel page" // tekst der vises på a-siden
+  },
+  {
+    id: "campaign",
+    label: "næmt.nu - Main page"
+  },
 ]);
 
+// Holder styr på hvilket entry point man står på
 const activeId = ref("spa");
 
+
+// Kører når brugeren klikker på en knap.
+// activeId opdateres til den valgte side.
 function switchDomain(id) {
   activeId.value = id;
 }
 
 const data = ref({
+
+  // EP1
   spa: {
-    visits: 30,
+    visits: 100,
     bounceRate: 43,
     contactClicks: 15,
     avgApiTime: 3.2,
   },
+
+  // EP2
   campaign: {
-    visits: 84,
+    visits: 10,
     bounceRate: 28,
     contactClicks: 26,
     avgApiTime: 2.8,
   },
 });
 
+// Returnerer en bestemt metric/KPI
 function getMetric(key) {
+  // Finder data for det aktive entry point.
   const current = data.value[activeId.value];
   return current ? current[key] : "-";
 }
@@ -35,10 +55,13 @@ function getMetric(key) {
 
 <template>
   <div class="dashboard">
-
     <!-- Mobile/tablet top nav -->
     <nav class="dashboard__topnav">
-      <button v-for="point in entryPoints" :key="point.id" class="dashboard__topnav-btn" :class="{ active: activeId === point.id }" @click="switchDomain(point.id)">
+      <button v-for="point in entryPoints" 
+        :key="point.id" class="dashboard__topnav-btn" 
+        :class="{ active: activeId === point.id }" 
+        @click="switchDomain(point.id)"
+        >
         {{ point.label }}
       </button>
     </nav>
@@ -49,7 +72,11 @@ function getMetric(key) {
       <aside class="dashboard__sidebar">
         <p class="dashboard__sidebar-title">Entry points</p>
 
-        <button v-for="point in entryPoints" :key="point.id" class="dashboard__domain-btn" :class="{ active: activeId === point.id }" @click="switchDomain(point.id)">
+        <button v-for="point in entryPoints" 
+          :key="point.id" class="dashboard__domain-btn" 
+          :class="{ active: activeId === point.id }" 
+          @click="switchDomain(point.id)"
+          >
           <span class="dashboard__dot"></span>
           {{ point.label }}
         </button>

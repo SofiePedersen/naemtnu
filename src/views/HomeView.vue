@@ -7,6 +7,8 @@ import Reviews from "../components/Reviews.vue";
 import Packs from "../components/Packs.vue";
 import SeoProcess from "../components/SeoProcess.vue";
 import HeroSection from "../components/HeroSection.vue";
+
+console.log("page visit +1")
 </script>
 
 <template>
