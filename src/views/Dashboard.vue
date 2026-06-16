@@ -38,13 +38,7 @@ function getMetric(key) {
 
     <!-- Mobile/tablet top nav -->
     <nav class="dashboard__topnav">
-      <button
-        v-for="point in entryPoints"
-        :key="point.id"
-        class="dashboard__topnav-btn"
-        :class="{ active: activeId === point.id }"
-        @click="switchDomain(point.id)"
-      >
+      <button v-for="point in entryPoints" :key="point.id" class="dashboard__topnav-btn" :class="{ active: activeId === point.id }" @click="switchDomain(point.id)">
         {{ point.label }}
       </button>
     </nav>
@@ -55,13 +49,7 @@ function getMetric(key) {
       <aside class="dashboard__sidebar">
         <p class="dashboard__sidebar-title">Entry points</p>
 
-        <button
-          v-for="point in entryPoints"
-          :key="point.id"
-          class="dashboard__domain-btn"
-          :class="{ active: activeId === point.id }"
-          @click="switchDomain(point.id)"
-        >
+        <button v-for="point in entryPoints" :key="point.id" class="dashboard__domain-btn" :class="{ active: activeId === point.id }" @click="switchDomain(point.id)">
           <span class="dashboard__dot"></span>
           {{ point.label }}
         </button>
